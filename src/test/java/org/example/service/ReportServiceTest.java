@@ -8,8 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Map;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ReportServiceTest {
 
@@ -18,7 +17,8 @@ class ReportServiceTest {
     @BeforeEach
     void setUp() {
         ManagerSalaryComparisonService managerComparisonService = new ManagerSalaryComparisonService();
-        reportService = new ReportService(managerComparisonService);
+        EmployeeReportingLineService employeeReportingLineService = new EmployeeReportingLineService();
+        reportService = new ReportService(managerComparisonService, employeeReportingLineService);
     }
 
     @Test
@@ -51,5 +51,22 @@ class ReportServiceTest {
         Map<Long, Double> overpaidManagersWithDisparity = reportService.getOverpaidManagersWithDisparity(employees);
 
         assertTrue(overpaidManagersWithDisparity.isEmpty());
+    }
+
+    @Test
+    void getEmployeesWithTooLongReportingLine_absent() {
+        Set<Employee> employees = TestUtility.getEmployeesWithCeoAndShortReportingLine();
+        Map<Long, Integer> employeesWithTooLongReportingLine = reportService.getEmployeesWithTooLongReportingLine(employees);
+
+        assertTrue(employeesWithTooLongReportingLine.isEmpty());
+    }
+
+    @Test
+    void getEmployeesWithTooLongReportingLine_present() {
+        Set<Employee> employees = TestUtility.getEmployeesWithCeoAndLongReportingLine();
+        Map<Long, Integer> employeesWithTooLongReportingLine = reportService.getEmployeesWithTooLongReportingLine(employees);
+
+        assertFalse(employeesWithTooLongReportingLine.isEmpty());
+        assertEquals(1, employeesWithTooLongReportingLine.get(305L));
     }
 }
