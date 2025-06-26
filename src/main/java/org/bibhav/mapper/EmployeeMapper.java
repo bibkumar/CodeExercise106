@@ -1,7 +1,7 @@
-package org.example.mapper;
+package org.bibhav.mapper;
 
-import org.example.model.Employee;
-import org.example.model.EmployeeDto;
+import org.bibhav.model.Employee;
+import org.bibhav.model.EmployeeDto;
 
 /**
  * Employee Mapper utility class.

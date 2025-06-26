@@ -1,6 +1,6 @@
-package org.example.repository;
+package org.bibhav.repository;
 
-import org.example.model.EmployeeDto;
+import org.bibhav.model.EmployeeDto;
 
 import java.util.List;
 /**

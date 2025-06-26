@@ -1,8 +1,7 @@
-package org.example.mapper;
+package org.bibhav.mapper;
 
-import org.example.mapper.EmployeeMapper;
-import org.example.model.Employee;
-import org.example.model.EmployeeDto;
+import org.bibhav.model.Employee;
+import org.bibhav.model.EmployeeDto;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

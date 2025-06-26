@@ -1,4 +1,4 @@
-package org.example.model;
+package org.bibhav.model;
 
 import lombok.Data;
 

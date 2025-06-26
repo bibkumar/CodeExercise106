@@ -1,10 +1,15 @@
-package org.example.service;
+package org.bibhav.service;
 
-import org.example.model.Employee;
+import org.bibhav.model.Employee;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * Employee reporting line service.
+ *
+ * @author BibhavKumar
+ */
 public class EmployeeReportingLineService {
 
     Map<Long, List<Long>> getEmployeeReportingLine(final Set<Employee> employees) {

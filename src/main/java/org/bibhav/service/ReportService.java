@@ -1,7 +1,7 @@
-package org.example.service;
+package org.bibhav.service;
 
-import org.example.model.Employee;
-import org.example.model.Manager;
+import org.bibhav.model.Employee;
+import org.bibhav.model.Manager;
 
 import java.util.HashMap;
 import java.util.List;

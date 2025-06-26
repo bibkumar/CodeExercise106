@@ -1,9 +1,9 @@
-package org.example.service;
+package org.bibhav.service;
 
-import org.example.mapper.EmployeeMapper;
-import org.example.model.Employee;
-import org.example.model.EmployeeDto;
-import org.example.repository.EmployeeRepository;
+import org.bibhav.mapper.EmployeeMapper;
+import org.bibhav.model.Employee;
+import org.bibhav.model.EmployeeDto;
+import org.bibhav.repository.EmployeeRepository;
 
 import java.util.List;
 import java.util.Objects;

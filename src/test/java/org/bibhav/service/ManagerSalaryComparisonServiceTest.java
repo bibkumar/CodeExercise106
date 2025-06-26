@@ -1,8 +1,8 @@
-package org.example.service;
+package org.bibhav.service;
 
-import org.example.TestUtility;
-import org.example.model.Employee;
-import org.example.model.Manager;
+import org.bibhav.TestUtility;
+import org.bibhav.model.Employee;
+import org.bibhav.model.Manager;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
