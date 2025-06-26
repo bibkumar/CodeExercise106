@@ -1,14 +1,20 @@
 package org.example.service;
 
+import org.example.mapper.EmployeeMapper;
 import org.example.model.Employee;
 import org.example.model.EmployeeDto;
-import org.example.mapper.EmployeeMapper;
 import org.example.repository.EmployeeRepository;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+/**
+ * Employee service.
+ *
+ * @author BibhavKumar
+ */
 
 public class EmployeeService {
     private final EmployeeRepository employeeRepository;
@@ -17,7 +23,7 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
-    public Set<Employee> fetchAllEmployees(){
+    public Set<Employee> fetchAllEmployees() {
         List<EmployeeDto> allEmployees = employeeRepository.getAllEmployees();
         return allEmployees.stream()
                 .map(e -> {

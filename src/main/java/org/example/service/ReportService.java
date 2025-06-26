@@ -7,6 +7,11 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * Report Service.
+ *
+ * @author BibhavKumar
+ */
 public class ReportService {
     private final ManagerSalaryComparisonService managerSalaryComparisonService;
 

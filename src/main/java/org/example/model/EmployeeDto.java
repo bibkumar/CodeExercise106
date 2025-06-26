@@ -4,6 +4,11 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ * Employee DTO.
+ *
+ * @author BibhavKumar
+ */
 @Data
 public class EmployeeDto {
     private Long id;

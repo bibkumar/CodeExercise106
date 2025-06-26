@@ -1,17 +1,20 @@
 package org.example;
 
 import org.example.model.Employee;
-import org.example.model.EmployeeDto;
 import org.example.model.Manager;
 import org.example.repository.FileEmployeeRepository;
 import org.example.service.EmployeeService;
 import org.example.service.ManagerSalaryComparisonService;
 import org.example.service.ReportService;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Entry point to the application.
+ *
+ * @author BibhavKumar
+ */
 public class Main {
     public static void main(String[] args) {
         FileEmployeeRepository fileEmployeeRepository = new FileEmployeeRepository("src/main/resources/data.csv");

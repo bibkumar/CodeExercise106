@@ -7,6 +7,11 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * Salary comparison service.
+ *
+ * @author BibhavKumar
+ */
 public class ManagerSalaryComparisonService {
     public Set<Manager> fetchManagersWithSalaryComparison(final Set<Employee> employees) {
         return employees.stream()

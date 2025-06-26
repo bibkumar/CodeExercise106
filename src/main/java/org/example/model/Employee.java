@@ -4,6 +4,11 @@ import lombok.Data;
 
 import java.util.Set;
 
+/**
+ * Employee POJO.
+ *
+ * @author BibhavKumar
+ */
 @Data
 public class Employee {
     private Long id;

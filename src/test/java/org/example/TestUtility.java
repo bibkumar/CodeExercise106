@@ -5,7 +5,15 @@ import org.example.model.Employee;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Test utility class.
+ *
+ * @author BibhavKumar
+ */
 public class TestUtility {
+    private TestUtility() {
+        /* Don't Initialize */
+    }
 
     public static Set<Employee> getEmployeesWithSubOrdinatesSalaryConfigurable(double salary) {
         Set<Employee> employees = new HashSet<>();

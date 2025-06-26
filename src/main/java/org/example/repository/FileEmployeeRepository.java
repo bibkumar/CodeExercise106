@@ -10,6 +10,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * Employee Repository mapped to file as data source.
+ *
+ * @author BibhavKumar
+ */
 public class FileEmployeeRepository implements EmployeeRepository {
 
     private final String dataFilePath;
