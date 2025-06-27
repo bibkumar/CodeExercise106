@@ -1,5 +1,6 @@
 package org.bibhav;
 
+import org.bibhav.exception.ApplicationException;
 import org.bibhav.model.Employee;
 import org.bibhav.repository.FileEmployeeRepository;
 import org.bibhav.service.EmployeeReportingLineCalculationService;
@@ -16,7 +17,7 @@ import java.util.Set;
  * @author BibhavKumar
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ApplicationException {
         FileEmployeeRepository fileEmployeeRepository = new FileEmployeeRepository("src/main/resources/data.csv");
         EmployeeService employeeService = new EmployeeService(fileEmployeeRepository);
         Set<Employee> employees = employeeService.getEmployees();

@@ -1,5 +1,6 @@
 package org.bibhav.service;
 
+import org.bibhav.exception.ApplicationException;
 import org.bibhav.model.Employee;
 import org.bibhav.repository.FileEmployeeRepository;
 import org.junit.jupiter.api.Assertions;
@@ -23,7 +24,7 @@ class EmployeeServiceTest {
     }
 
     @Test
-    void fetchAllEmployees() {
+    void fetchAllEmployees() throws ApplicationException {
         Set<Employee> employees = employeeService.getEmployees();
 
         Assertions.assertEquals(2, employees.size());

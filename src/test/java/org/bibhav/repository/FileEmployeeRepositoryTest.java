@@ -1,5 +1,6 @@
 package org.bibhav.repository;
 
+import org.bibhav.exception.ApplicationException;
 import org.bibhav.model.EmployeeDto;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -22,7 +23,7 @@ class FileEmployeeRepositoryTest {
     }
 
     @Test
-    void getAllEmployees() {
+    void getAllEmployees() throws ApplicationException {
         List<EmployeeDto> allEmployees = fileEmployeeRepository.getEmployees();
 
         Assertions.assertEquals(2, allEmployees.size());

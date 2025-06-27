@@ -1,5 +1,6 @@
 package org.bibhav.repository;
 
+import org.bibhav.exception.ApplicationException;
 import org.bibhav.model.EmployeeDto;
 
 import java.util.List;
@@ -10,5 +11,5 @@ import java.util.List;
  */
 public interface EmployeeRepository {
 
-    List<EmployeeDto> getEmployees();
+    List<EmployeeDto> getEmployees() throws ApplicationException;
 }

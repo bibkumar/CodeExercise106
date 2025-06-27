@@ -1,5 +1,6 @@
 package org.bibhav.repository;
 
+import org.bibhav.exception.ApplicationException;
 import org.bibhav.model.EmployeeDto;
 
 import java.io.IOException;
@@ -23,15 +24,14 @@ public class FileEmployeeRepository implements EmployeeRepository {
         this.dataFilePath = dataFilePath;
     }
 
-    public List<EmployeeDto> getEmployees() {
+    public List<EmployeeDto> getEmployees() throws ApplicationException {
         try (Stream<String> lines = Files.lines(Paths.get(dataFilePath))) {
             return lines.map(line -> Arrays.asList(line.split(",")))
                     .skip(1)
                     .map(EmployeeDto::new)
                     .collect(Collectors.toList());
         } catch (IOException e) {
-            System.out.println("Error occurred in reading file");
-            throw new RuntimeException(e);
+            throw new ApplicationException("Error occurred in reading file");
         }
     }
 }

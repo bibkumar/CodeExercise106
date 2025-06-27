@@ -1,5 +1,6 @@
 package org.bibhav.service;
 
+import org.bibhav.exception.ApplicationException;
 import org.bibhav.mapper.EmployeeMapper;
 import org.bibhav.model.Employee;
 import org.bibhav.model.EmployeeDto;
@@ -28,7 +29,7 @@ public class EmployeeService {
      *
      * @return Set of employees.
      */
-    public Set<Employee> getEmployees() {
+    public Set<Employee> getEmployees() throws ApplicationException {
         List<EmployeeDto> allEmployees = employeeRepository.getEmployees();
         return allEmployees.stream()
                 .map(e -> {
