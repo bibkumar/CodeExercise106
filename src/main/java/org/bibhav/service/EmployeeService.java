@@ -1,7 +1,7 @@
 package org.bibhav.service;
 
 import org.bibhav.exception.ApplicationException;
-import org.bibhav.mapper.EmployeeMapper;
+import org.bibhav.util.EmployeeUtility;
 import org.bibhav.model.Employee;
 import org.bibhav.model.EmployeeDto;
 import org.bibhav.repository.EmployeeRepository;
@@ -33,10 +33,10 @@ public class EmployeeService {
         List<EmployeeDto> allEmployees = employeeRepository.getEmployees();
         return allEmployees.stream()
                 .map(e -> {
-                    Employee employee = EmployeeMapper.getEmployee(e);
+                    Employee employee = EmployeeUtility.getEmployeeFromEmployeeDto(e);
                     Set<Employee> subordinates = allEmployees.stream()
                             .filter(s -> Objects.equals(employee.getId(), s.getManagerId()))
-                            .map(EmployeeMapper::getEmployee)
+                            .map(EmployeeUtility::getEmployeeFromEmployeeDto)
                             .collect(Collectors.toSet());
                     employee.setSubOrdinates(subordinates);
                     return employee;

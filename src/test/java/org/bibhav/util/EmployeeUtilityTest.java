@@ -1,4 +1,4 @@
-package org.bibhav.mapper;
+package org.bibhav.util;
 
 import org.bibhav.model.Employee;
 import org.bibhav.model.EmployeeDto;
@@ -8,15 +8,15 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
 /**
- * Test class to test functions of employee mapper.
+ * Test class to test functions of employee utility.
  *
  * @author BibhavKumar
  */
-class EmployeeMapperTest {
+class EmployeeUtilityTest {
     @Test
-    void getEmployee() {
+    void getEmployeeFromEmployeeDto() {
         Employee expectedEmployee = new Employee(124L, "Martin", "Chekov", 45000D, 123L);
-        Employee actualEmployee = EmployeeMapper.getEmployee(new EmployeeDto(Arrays.asList("124", "Martin", "Chekov", "45000", "123")));
+        Employee actualEmployee = EmployeeUtility.getEmployeeFromEmployeeDto(new EmployeeDto(Arrays.asList("124", "Martin", "Chekov", "45000", "123")));
 
         Assertions.assertEquals(expectedEmployee, actualEmployee);
     }

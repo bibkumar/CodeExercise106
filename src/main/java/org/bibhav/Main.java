@@ -11,6 +11,8 @@ import org.bibhav.service.ReportService;
 import java.util.Map;
 import java.util.Set;
 
+import static org.bibhav.util.PrintUtility.printMapWithProperInformation;
+
 /**
  * Entry point to the application.
  *
@@ -26,14 +28,22 @@ public class Main {
         EmployeeReportingLineCalculationService employeeReportingLineCalculationService = new EmployeeReportingLineCalculationService();
         ReportService reportService = new ReportService(managerSalaryComparisonService, employeeReportingLineCalculationService);
 
+        System.out.println("*******************************************");
+        System.out.println("(1) which managers earn less than they should, and by how much");
         Map<Long, Double> underpaidManagersWithDisparity = reportService.getUnderpaidManagersWithDisparity(employees);
-        System.out.println("Underpaid Managers With Disparity" + underpaidManagersWithDisparity);
+        printMapWithProperInformation("Manager", underpaidManagersWithDisparity, "earns less than they should, and by");
+        System.out.println("*******************************************");
 
+        System.out.println("(2) which managers earn more than they should, and by how much");
         Map<Long, Double> overpaidManagersWithDisparity = reportService.getOverpaidManagersWithDisparity(employees);
-        System.out.println("Overpaid Managers With Disparity" + overpaidManagersWithDisparity);
+        printMapWithProperInformation("Manager", overpaidManagersWithDisparity, "earns more than they should, and by");
+        System.out.println("*******************************************");
 
+        System.out.println("(3) which employees have a reporting line which is too long, and by how much");
         Map<Long, Integer> employeesWithTooLongReportingLine = reportService.getEmployeesWithTooLongReportingLine(employees);
-        System.out.println("Employees With Too Long Reporting Line" + employeesWithTooLongReportingLine);
+        printMapWithProperInformation("Employee", employeesWithTooLongReportingLine, "have a reporting line which is too long, and by");
+        System.out.println("*******************************************");
     }
+
 
 }

@@ -1,19 +1,19 @@
-package org.bibhav.mapper;
+package org.bibhav.util;
 
 import org.bibhav.model.Employee;
 import org.bibhav.model.EmployeeDto;
 
 /**
- * Employee Mapper utility class.
+ * Employee utility class.
  *
  * @author BibhavKumar
  */
-public class EmployeeMapper {
-    private EmployeeMapper() {
+public class EmployeeUtility {
+    private EmployeeUtility() {
         /* Don't initialize */
     }
 
-    public static Employee getEmployee(final EmployeeDto employeeDto) {
+    public static Employee getEmployeeFromEmployeeDto(final EmployeeDto employeeDto) {
         return new Employee(employeeDto.getId(), employeeDto.getFirstName(), employeeDto.getLastName(), employeeDto.getSalary(), employeeDto.getManagerId());
     }
 }
