@@ -22,8 +22,8 @@ class ReportServiceTest {
     @BeforeEach
     void setUp() {
         ManagerSalaryComparisonService managerComparisonService = new ManagerSalaryComparisonService();
-        EmployeeReportingLineService employeeReportingLineService = new EmployeeReportingLineService();
-        reportService = new ReportService(managerComparisonService, employeeReportingLineService);
+        EmployeeReportingLineCalculationService employeeReportingLineCalculationService = new EmployeeReportingLineCalculationService();
+        reportService = new ReportService(managerComparisonService, employeeReportingLineCalculationService);
     }
 
     @Test

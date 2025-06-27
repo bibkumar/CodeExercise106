@@ -24,7 +24,7 @@ class EmployeeServiceTest {
 
     @Test
     void fetchAllEmployees() {
-        Set<Employee> employees = employeeService.fetchAllEmployees();
+        Set<Employee> employees = employeeService.getEmployees();
 
         Assertions.assertEquals(2, employees.size());
     }

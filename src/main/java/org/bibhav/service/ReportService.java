@@ -16,11 +16,11 @@ import java.util.stream.Collectors;
  */
 public class ReportService {
     private final ManagerSalaryComparisonService managerSalaryComparisonService;
-    private final EmployeeReportingLineService employeeReportingLineService;
+    private final EmployeeReportingLineCalculationService employeeReportingLineCalculationService;
 
-    public ReportService(final ManagerSalaryComparisonService managerSalaryComparisonService, EmployeeReportingLineService employeeReportingLineService) {
+    public ReportService(final ManagerSalaryComparisonService managerSalaryComparisonService, EmployeeReportingLineCalculationService employeeReportingLineCalculationService) {
         this.managerSalaryComparisonService = managerSalaryComparisonService;
-        this.employeeReportingLineService = employeeReportingLineService;
+        this.employeeReportingLineCalculationService = employeeReportingLineCalculationService;
     }
 
     /**
@@ -54,7 +54,7 @@ public class ReportService {
      * @return Map with key as Employee Id and Value is Disparity in managers count b/w ceo and them.
      */
     public Map<Long, Integer> getEmployeesWithTooLongReportingLine(Set<Employee> employees) {
-        Map<Long, List<Long>> employeeReportingLine = employeeReportingLineService.getEmployeeReportingLine(employees);
+        Map<Long, List<Long>> employeeReportingLine = employeeReportingLineCalculationService.getEmployeeReportingLineMap(employees);
         Map<Long, Integer> employeesWithTooLongReportingLine = new HashMap<>();
         employeeReportingLine.forEach((key, value) -> {
             if (value.size() > 4) {

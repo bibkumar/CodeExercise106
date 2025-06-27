@@ -23,8 +23,7 @@ public class FileEmployeeRepository implements EmployeeRepository {
         this.dataFilePath = dataFilePath;
     }
 
-    @Override
-    public List<EmployeeDto> getAllEmployees() {
+    public List<EmployeeDto> getEmployees() {
         try (Stream<String> lines = Files.lines(Paths.get(dataFilePath))) {
             return lines.map(line -> Arrays.asList(line.split(",")))
                     .skip(1)

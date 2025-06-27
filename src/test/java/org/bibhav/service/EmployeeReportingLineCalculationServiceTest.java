@@ -17,19 +17,19 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  *
  * @author BibhavKumar
  */
-class EmployeeReportingLineServiceTest {
+class EmployeeReportingLineCalculationServiceTest {
 
-    private static EmployeeReportingLineService employeeReportingLineService;
+    private static EmployeeReportingLineCalculationService employeeReportingLineCalculationService;
 
     @BeforeEach
     void setUp() {
-        employeeReportingLineService = new EmployeeReportingLineService();
+        employeeReportingLineCalculationService = new EmployeeReportingLineCalculationService();
     }
 
     @Test
     void getEmployeeReportingLine_shortReportingLine() {
         Set<Employee> employees = TestUtility.getEmployeesWithCeoAndShortReportingLine();
-        Map<Long, List<Long>> employeeReportingLine = employeeReportingLineService.getEmployeeReportingLine(employees);
+        Map<Long, List<Long>> employeeReportingLine = employeeReportingLineCalculationService.getEmployeeReportingLineMap(employees);
 
         assertEquals(2, employeeReportingLine.size());
         List<Long> managerLine = employeeReportingLine.get(301L);
@@ -40,7 +40,7 @@ class EmployeeReportingLineServiceTest {
     @Test
     void getEmployeeReportingLine_longReportingLine() {
         Set<Employee> employees = TestUtility.getEmployeesWithCeoAndLongReportingLine();
-        Map<Long, List<Long>> employeeReportingLine = employeeReportingLineService.getEmployeeReportingLine(employees);
+        Map<Long, List<Long>> employeeReportingLine = employeeReportingLineCalculationService.getEmployeeReportingLineMap(employees);
 
         assertEquals(6, employeeReportingLine.size());
         List<Long> managerLine = employeeReportingLine.get(305L);

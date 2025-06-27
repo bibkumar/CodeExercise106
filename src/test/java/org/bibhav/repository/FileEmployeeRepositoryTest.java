@@ -23,7 +23,7 @@ class FileEmployeeRepositoryTest {
 
     @Test
     void getAllEmployees() {
-        List<EmployeeDto> allEmployees = fileEmployeeRepository.getAllEmployees();
+        List<EmployeeDto> allEmployees = fileEmployeeRepository.getEmployees();
 
         Assertions.assertEquals(2, allEmployees.size());
     }

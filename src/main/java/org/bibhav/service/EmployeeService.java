@@ -24,12 +24,12 @@ public class EmployeeService {
     }
 
     /**
-     * Fetch all employees from data source.
+     * Get employees from data source.
      *
      * @return Set of employees.
      */
-    public Set<Employee> fetchAllEmployees() {
-        List<EmployeeDto> allEmployees = employeeRepository.getAllEmployees();
+    public Set<Employee> getEmployees() {
+        List<EmployeeDto> allEmployees = employeeRepository.getEmployees();
         return allEmployees.stream()
                 .map(e -> {
                     Employee employee = EmployeeMapper.getEmployee(e);

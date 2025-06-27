@@ -10,5 +10,5 @@ import java.util.List;
  */
 public interface EmployeeRepository {
 
-    List<EmployeeDto> getAllEmployees();
+    List<EmployeeDto> getEmployees();
 }
