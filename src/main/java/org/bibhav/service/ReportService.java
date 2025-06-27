@@ -23,18 +23,36 @@ public class ReportService {
         this.employeeReportingLineService = employeeReportingLineService;
     }
 
+    /**
+     * Get underpaid managers with disparity amount.
+     *
+     * @param employees
+     * @return Map with key as Employee Id and Value is Disparity amount.
+     */
     public Map<Long, Double> getUnderpaidManagersWithDisparity(Set<Employee> employees) {
         Set<Manager> managers = managerSalaryComparisonService.fetchManagersWithSalaryComparison(employees);
         return managers.stream().filter(m -> Boolean.TRUE.equals(m.getEarningLess()))
                 .collect(Collectors.toMap(Manager::getId, Manager::getByAmount));
     }
 
+    /**
+     * Get overpaid employees with disparity amount.
+     *
+     * @param employees
+     * @return Map with key as Employee Id and Value is Disparity amount.
+     */
     public Map<Long, Double> getOverpaidManagersWithDisparity(Set<Employee> employees) {
         Set<Manager> managers = managerSalaryComparisonService.fetchManagersWithSalaryComparison(employees);
         return managers.stream().filter(m -> Boolean.TRUE.equals(m.getEarningMore()))
                 .collect(Collectors.toMap(Manager::getId, Manager::getByAmount));
     }
 
+    /**
+     * Get Employees with too long reporting line; employees who has more than 4 managers b/w them and CEO.
+     *
+     * @param employees
+     * @return Map with key as Employee Id and Value is Disparity in managers count b/w ceo and them.
+     */
     public Map<Long, Integer> getEmployeesWithTooLongReportingLine(Set<Employee> employees) {
         Map<Long, List<Long>> employeeReportingLine = employeeReportingLineService.getEmployeeReportingLine(employees);
         Map<Long, Integer> employeesWithTooLongReportingLine = new HashMap<>();

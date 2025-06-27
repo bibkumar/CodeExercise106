@@ -13,6 +13,12 @@ import java.util.stream.Collectors;
  * @author BibhavKumar
  */
 public class ManagerSalaryComparisonService {
+    /**
+     * Fetch all managers with salary comparison with theirs subordinates.
+     *
+     * @param employees
+     * @return Managers with salary comparison.
+     */
     public Set<Manager> fetchManagersWithSalaryComparison(final Set<Employee> employees) {
         return employees.stream()
                 .filter(e -> Objects.nonNull(e.getSubOrdinates()) && !e.getSubOrdinates().isEmpty())

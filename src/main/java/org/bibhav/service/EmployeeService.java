@@ -23,6 +23,11 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
+    /**
+     * Fetch all employees from data source.
+     *
+     * @return Set of employees.
+     */
     public Set<Employee> fetchAllEmployees() {
         List<EmployeeDto> allEmployees = employeeRepository.getAllEmployees();
         return allEmployees.stream()

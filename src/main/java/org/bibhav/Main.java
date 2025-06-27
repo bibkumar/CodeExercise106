@@ -23,9 +23,6 @@ public class Main {
         Set<Employee> employees = employeeService.fetchAllEmployees();
 
         ManagerSalaryComparisonService managerSalaryComparisonService = new ManagerSalaryComparisonService();
-        Set<Manager> managersWithSalaryComparison = managerSalaryComparisonService.fetchManagersWithSalaryComparison(employees);
-        System.out.println("Managers With Salary Comparison " + managersWithSalaryComparison);
-
         EmployeeReportingLineService employeeReportingLineService = new EmployeeReportingLineService();
         ReportService reportService = new ReportService(managerSalaryComparisonService, employeeReportingLineService);
 

@@ -12,6 +12,12 @@ import java.util.stream.Collectors;
  */
 public class EmployeeReportingLineService {
 
+    /**
+     * Get Employees except ceo with their manager hierarchy list except Ceo.
+     *
+     * @param employees
+     * @return Map with key as Employee Id and value as list of Id of managers b/w the employee and Ceo.
+     */
     Map<Long, List<Long>> getEmployeeReportingLine(final Set<Employee> employees) {
         Optional<Employee> ceoOptional = employees.stream().filter(e -> Objects.isNull(e.getManagerId())).findFirst();
         if (ceoOptional.isPresent()) {
