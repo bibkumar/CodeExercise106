@@ -10,6 +10,11 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Test class to test functions of reporting service.
+ *
+ * @author BibhavKumar
+ */
 class ReportServiceTest {
 
     private static ReportService reportService;

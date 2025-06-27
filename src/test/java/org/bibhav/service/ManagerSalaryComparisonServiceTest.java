@@ -11,6 +11,11 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Test class to test functions of manager salary comparison service.
+ *
+ * @author BibhavKumar
+ */
 class ManagerSalaryComparisonServiceTest {
     private static ManagerSalaryComparisonService managerSalaryComparisonService;
 

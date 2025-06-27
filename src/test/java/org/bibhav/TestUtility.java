@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Test utility class.
+ * Test utility class to provide functions for test data.
  *
  * @author BibhavKumar
  */

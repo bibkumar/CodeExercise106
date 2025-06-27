@@ -8,6 +8,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
+/**
+ * Test class to test functions of employee service.
+ *
+ * @author BibhavKumar
+ */
 class EmployeeServiceTest {
     private static EmployeeService employeeService;
 
@@ -16,6 +21,7 @@ class EmployeeServiceTest {
         FileEmployeeRepository fileEmployeeRepository = new FileEmployeeRepository("src/test/resources/test_data.csv");
         employeeService = new EmployeeService(fileEmployeeRepository);
     }
+
     @Test
     void fetchAllEmployees() {
         Set<Employee> employees = employeeService.fetchAllEmployees();

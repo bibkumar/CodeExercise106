@@ -7,6 +7,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
+/**
+ * Test class to test functions of employee mapper.
+ *
+ * @author BibhavKumar
+ */
 class EmployeeMapperTest {
     @Test
     void getEmployee() {

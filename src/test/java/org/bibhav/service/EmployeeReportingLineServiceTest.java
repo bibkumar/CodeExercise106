@@ -12,6 +12,11 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test class to test functions related to employee reporting line.
+ *
+ * @author BibhavKumar
+ */
 class EmployeeReportingLineServiceTest {
 
     private static EmployeeReportingLineService employeeReportingLineService;
