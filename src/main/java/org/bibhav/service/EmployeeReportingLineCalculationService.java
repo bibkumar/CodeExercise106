@@ -19,7 +19,7 @@ public class EmployeeReportingLineCalculationService {
      * @param employees
      * @return Map with key as Employee Id and value as list of Id of managers b/w the employee and Ceo.
      */
-    Map<Long, List<Long>> getEmployeeReportingLineMap(final Set<Employee> employees) throws ApplicationException {
+    Map<Long, List<Long>> getEmployeeIdAndReportingLineListMap(final Set<Employee> employees) throws ApplicationException {
         Employee ceo = getCompanyCeo(employees);
         Map<Long, Employee> employeeMap = employees.stream().collect(Collectors.toMap(Employee::getId, e -> e));
         return employees.stream()

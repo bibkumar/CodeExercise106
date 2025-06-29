@@ -57,7 +57,7 @@ public class ReportService {
      * @return Map with key as Employee Id and Value is Disparity in managers count b/w ceo and them.
      */
     public Map<Long, Integer> getEmployeesWithTooLongReportingLine(final Set<Employee> employees) throws ApplicationException {
-        Map<Long, List<Long>> employeeReportingLine = employeeReportingLineCalculationService.getEmployeeReportingLineMap(employees);
+        Map<Long, List<Long>> employeeReportingLine = employeeReportingLineCalculationService.getEmployeeIdAndReportingLineListMap(employees);
         Map<Long, Integer> employeesWithTooLongReportingLine = new HashMap<>();
         employeeReportingLine.forEach((key, value) -> {
             if (value.size() > 4) {

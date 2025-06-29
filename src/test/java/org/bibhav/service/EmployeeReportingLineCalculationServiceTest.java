@@ -30,7 +30,7 @@ class EmployeeReportingLineCalculationServiceTest {
     @Test
     void getEmployeeReportingLine_shortReportingLine() throws ApplicationException {
         Set<Employee> employees = TestUtility.getEmployeesWithCeoAndShortReportingLine();
-        Map<Long, List<Long>> employeeReportingLine = employeeReportingLineCalculationService.getEmployeeReportingLineMap(employees);
+        Map<Long, List<Long>> employeeReportingLine = employeeReportingLineCalculationService.getEmployeeIdAndReportingLineListMap(employees);
 
         assertEquals(2, employeeReportingLine.size());
         List<Long> managerLine = employeeReportingLine.get(301L);
@@ -41,7 +41,7 @@ class EmployeeReportingLineCalculationServiceTest {
     @Test
     void getEmployeeReportingLine_longReportingLine() throws ApplicationException {
         Set<Employee> employees = TestUtility.getEmployeesWithCeoAndLongReportingLine();
-        Map<Long, List<Long>> employeeReportingLine = employeeReportingLineCalculationService.getEmployeeReportingLineMap(employees);
+        Map<Long, List<Long>> employeeReportingLine = employeeReportingLineCalculationService.getEmployeeIdAndReportingLineListMap(employees);
 
         assertEquals(6, employeeReportingLine.size());
         List<Long> managerLine = employeeReportingLine.get(305L);
