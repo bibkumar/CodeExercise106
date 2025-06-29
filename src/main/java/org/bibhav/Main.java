@@ -20,7 +20,9 @@ import static org.bibhav.util.PrintUtility.printMapWithProperInformation;
  */
 public class Main {
     public static void main(String[] args) throws ApplicationException {
-        FileEmployeeRepository fileEmployeeRepository = new FileEmployeeRepository("src/main/resources/data.csv");
+        String dataFilePath = args[0];
+        System.out.println("Data file path: - " + dataFilePath);
+        FileEmployeeRepository fileEmployeeRepository = new FileEmployeeRepository(dataFilePath);
         EmployeeService employeeService = new EmployeeService(fileEmployeeRepository);
         Set<Employee> employees = employeeService.getEmployees();
 

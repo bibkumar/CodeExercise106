@@ -52,7 +52,9 @@ To install this project, follow these steps:
     ```
 4. **Start the app with java:**
     ```bash
-   java -jar .\target\CodeExercise106-1.0-SNAPSHOT.jar
+   java -jar .\target\CodeExercise106-1.0-SNAPSHOT.jar "<data file path>"
+   For Example: - 
+    java -jar .\target\CodeExercise106-1.0-SNAPSHOT.jar "src/main/resources/data.csv"
     ```
 
 ### Running tests
