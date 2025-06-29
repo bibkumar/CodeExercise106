@@ -3,10 +3,11 @@ package org.bibhav.repository;
 import org.bibhav.exception.ApplicationException;
 import org.bibhav.model.EmployeeDto;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Test class to test functions of file based employee repository.
@@ -14,18 +15,35 @@ import java.util.List;
  * @author BibhavKumar
  */
 class FileEmployeeRepositoryTest {
+    @Test
+    void getEmployeeDtoList_absentFileShouldThrowApplicationException() throws ApplicationException {
+        FileEmployeeRepository emptyFileEmployeeRepository = new FileEmployeeRepository("src/test/resources/absent_test_data.csv");
+        ApplicationException applicationException = Assertions.assertThrows(ApplicationException.class, emptyFileEmployeeRepository::getEmployeeDtoList);
 
-    private static FileEmployeeRepository fileEmployeeRepository;
-
-    @BeforeAll
-    static void setUp() {
-        fileEmployeeRepository = new FileEmployeeRepository("src/test/resources/test_data.csv");
+        assertEquals("Error occurred in reading file", applicationException.getMessage());
     }
 
     @Test
-    void getAllEmployees() throws ApplicationException {
+    void getEmployeeDtoList_emptyDataFileShouldReturnZeroRecords() throws ApplicationException {
+        FileEmployeeRepository emptyFileEmployeeRepository = new FileEmployeeRepository("src/test/resources/empty_test_data.csv");
+        List<EmployeeDto> allEmployees = emptyFileEmployeeRepository.getEmployeeDtoList();
+
+        assertEquals(0, allEmployees.size());
+    }
+
+    @Test
+    void getEmployeeDtoList_shouldSkipFirstLineAsHeader() throws ApplicationException {
+        FileEmployeeRepository fileEmployeeRepository = new FileEmployeeRepository("src/test/resources/only_header_test_data.csv");
         List<EmployeeDto> allEmployees = fileEmployeeRepository.getEmployeeDtoList();
 
-        Assertions.assertEquals(2, allEmployees.size());
+        assertEquals(0, allEmployees.size());
+    }
+
+    @Test
+    void getEmployeeDtoList_properFileTest() throws ApplicationException {
+        FileEmployeeRepository fileEmployeeRepository = new FileEmployeeRepository("src/test/resources/test_data.csv");
+        List<EmployeeDto> allEmployees = fileEmployeeRepository.getEmployeeDtoList();
+
+        assertEquals(2, allEmployees.size());
     }
 }
