@@ -2,6 +2,7 @@ package org.bibhav;
 
 import org.bibhav.exception.ApplicationException;
 import org.bibhav.model.Employee;
+import org.bibhav.repository.EmployeeRepository;
 import org.bibhav.repository.FileEmployeeRepository;
 import org.bibhav.service.EmployeeReportingLineCalculationService;
 import org.bibhav.service.EmployeeService;
@@ -22,7 +23,7 @@ public class Main {
     public static void main(final String[] args) throws ApplicationException {
         String dataFilePath = args[0];
         System.out.println("Data file path: - " + dataFilePath);
-        FileEmployeeRepository fileEmployeeRepository = new FileEmployeeRepository(dataFilePath);
+        EmployeeRepository fileEmployeeRepository = new FileEmployeeRepository(dataFilePath);
         EmployeeService employeeService = new EmployeeService(fileEmployeeRepository);
         Set<Employee> employees = employeeService.getEmployees();
 
