@@ -19,7 +19,7 @@ public class EmployeeDto {
         this.firstName = line.get(1);
         this.lastName = line.get(2);
         this.salary = Double.parseDouble(line.get(3));
-        if (line.size() > 4) { // few records has empty manager Id
+        if (line.size() > 4) { //Assumption 3 mentioned in readme file
             this.managerId = Long.parseLong(line.get(4));
         }
     }

@@ -24,7 +24,7 @@ class FileEmployeeRepositoryTest {
 
     @Test
     void getAllEmployees() throws ApplicationException {
-        List<EmployeeDto> allEmployees = fileEmployeeRepository.getEmployees();
+        List<EmployeeDto> allEmployees = fileEmployeeRepository.getEmployeeDtoList();
 
         Assertions.assertEquals(2, allEmployees.size());
     }

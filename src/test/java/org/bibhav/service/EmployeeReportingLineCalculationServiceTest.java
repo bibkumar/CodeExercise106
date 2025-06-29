@@ -1,6 +1,7 @@
 package org.bibhav.service;
 
 import org.bibhav.TestUtility;
+import org.bibhav.exception.ApplicationException;
 import org.bibhav.model.Employee;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,7 +28,7 @@ class EmployeeReportingLineCalculationServiceTest {
     }
 
     @Test
-    void getEmployeeReportingLine_shortReportingLine() {
+    void getEmployeeReportingLine_shortReportingLine() throws ApplicationException {
         Set<Employee> employees = TestUtility.getEmployeesWithCeoAndShortReportingLine();
         Map<Long, List<Long>> employeeReportingLine = employeeReportingLineCalculationService.getEmployeeReportingLineMap(employees);
 
@@ -38,7 +39,7 @@ class EmployeeReportingLineCalculationServiceTest {
     }
 
     @Test
-    void getEmployeeReportingLine_longReportingLine() {
+    void getEmployeeReportingLine_longReportingLine() throws ApplicationException {
         Set<Employee> employees = TestUtility.getEmployeesWithCeoAndLongReportingLine();
         Map<Long, List<Long>> employeeReportingLine = employeeReportingLineCalculationService.getEmployeeReportingLineMap(employees);
 

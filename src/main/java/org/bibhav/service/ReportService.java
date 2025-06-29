@@ -1,5 +1,6 @@
 package org.bibhav.service;
 
+import org.bibhav.exception.ApplicationException;
 import org.bibhav.model.Employee;
 import org.bibhav.model.Manager;
 
@@ -18,7 +19,7 @@ public class ReportService {
     private final ManagerSalaryComparisonService managerSalaryComparisonService;
     private final EmployeeReportingLineCalculationService employeeReportingLineCalculationService;
 
-    public ReportService(final ManagerSalaryComparisonService managerSalaryComparisonService, EmployeeReportingLineCalculationService employeeReportingLineCalculationService) {
+    public ReportService(final ManagerSalaryComparisonService managerSalaryComparisonService, final EmployeeReportingLineCalculationService employeeReportingLineCalculationService) {
         this.managerSalaryComparisonService = managerSalaryComparisonService;
         this.employeeReportingLineCalculationService = employeeReportingLineCalculationService;
     }
@@ -29,9 +30,10 @@ public class ReportService {
      * @param employees
      * @return Map with key as Employee Id and Value is Disparity amount.
      */
-    public Map<Long, Double> getUnderpaidManagersWithDisparity(Set<Employee> employees) {
+    public Map<Long, Double> getUnderpaidManagersWithDisparity(final Set<Employee> employees) {
         Set<Manager> managers = managerSalaryComparisonService.fetchManagersWithSalaryComparison(employees);
-        return managers.stream().filter(m -> Boolean.TRUE.equals(m.getEarningLess()))
+        return managers.stream()
+                .filter(m -> Boolean.TRUE.equals(m.getEarningLess()))
                 .collect(Collectors.toMap(Manager::getId, Manager::getByAmount));
     }
 
@@ -41,9 +43,10 @@ public class ReportService {
      * @param employees
      * @return Map with key as Employee Id and Value is Disparity amount.
      */
-    public Map<Long, Double> getOverpaidManagersWithDisparity(Set<Employee> employees) {
+    public Map<Long, Double> getOverpaidManagersWithDisparity(final Set<Employee> employees) {
         Set<Manager> managers = managerSalaryComparisonService.fetchManagersWithSalaryComparison(employees);
-        return managers.stream().filter(m -> Boolean.TRUE.equals(m.getEarningMore()))
+        return managers.stream()
+                .filter(m -> Boolean.TRUE.equals(m.getEarningMore()))
                 .collect(Collectors.toMap(Manager::getId, Manager::getByAmount));
     }
 
@@ -53,7 +56,7 @@ public class ReportService {
      * @param employees
      * @return Map with key as Employee Id and Value is Disparity in managers count b/w ceo and them.
      */
-    public Map<Long, Integer> getEmployeesWithTooLongReportingLine(Set<Employee> employees) {
+    public Map<Long, Integer> getEmployeesWithTooLongReportingLine(final Set<Employee> employees) throws ApplicationException {
         Map<Long, List<Long>> employeeReportingLine = employeeReportingLineCalculationService.getEmployeeReportingLineMap(employees);
         Map<Long, Integer> employeesWithTooLongReportingLine = new HashMap<>();
         employeeReportingLine.forEach((key, value) -> {

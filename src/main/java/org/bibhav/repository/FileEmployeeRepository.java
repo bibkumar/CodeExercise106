@@ -24,7 +24,7 @@ public class FileEmployeeRepository implements EmployeeRepository {
         this.dataFilePath = dataFilePath;
     }
 
-    public List<EmployeeDto> getEmployees() throws ApplicationException {
+    public List<EmployeeDto> getEmployeeDtoList() throws ApplicationException {
         try (Stream<String> lines = Files.lines(Paths.get(dataFilePath))) {
             return lines.map(line -> Arrays.asList(line.split(",")))
                     .skip(1)

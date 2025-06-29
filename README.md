@@ -65,7 +65,7 @@ mvn clean install
 ### Project Assumptions:
 
 - CSV file will always contain the first line as header.
-- There is only one CEO in the data file.
+- There is only one CEO in the data file and always present.
 - All the attributes of the employees are not null except manager id of CEO which is null.
 - Company consists of CEO, Managers and Employees.
 - CEO is also a Manager.

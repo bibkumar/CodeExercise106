@@ -30,7 +30,7 @@ public class EmployeeService {
      * @return Set of employees.
      */
     public Set<Employee> getEmployees() throws ApplicationException {
-        List<EmployeeDto> allEmployees = employeeRepository.getEmployees();
+        List<EmployeeDto> allEmployees = employeeRepository.getEmployeeDtoList();
         return allEmployees.stream()
                 .map(e -> {
                     Employee employee = EmployeeUtility.getEmployeeFromEmployeeDto(e);

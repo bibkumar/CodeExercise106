@@ -19,7 +19,7 @@ import static org.bibhav.util.PrintUtility.printMapWithProperInformation;
  * @author BibhavKumar
  */
 public class Main {
-    public static void main(String[] args) throws ApplicationException {
+    public static void main(final String[] args) throws ApplicationException {
         String dataFilePath = args[0];
         System.out.println("Data file path: - " + dataFilePath);
         FileEmployeeRepository fileEmployeeRepository = new FileEmployeeRepository(dataFilePath);

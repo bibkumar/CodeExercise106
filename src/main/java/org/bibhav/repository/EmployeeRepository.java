@@ -11,5 +11,5 @@ import java.util.List;
  */
 public interface EmployeeRepository {
 
-    List<EmployeeDto> getEmployees() throws ApplicationException;
+    List<EmployeeDto> getEmployeeDtoList() throws ApplicationException;
 }
