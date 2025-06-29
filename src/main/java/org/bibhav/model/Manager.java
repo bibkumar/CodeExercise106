@@ -30,9 +30,6 @@ public class Manager {
         this.salary = salary;
     }
 
-    public Double getAvgSubOrdinatesSalary() {
-        return avgSubOrdinatesSalary;
-    }
 
     public void setAvgSubOrdinatesSalary(Double avgSubOrdinatesSalary) {
         this.avgSubOrdinatesSalary = avgSubOrdinatesSalary;

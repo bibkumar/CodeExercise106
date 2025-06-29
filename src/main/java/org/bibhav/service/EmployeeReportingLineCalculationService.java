@@ -39,7 +39,7 @@ public class EmployeeReportingLineCalculationService {
         Optional<Employee> ceoOptional = employees.stream()
                 .filter(e -> Objects.isNull(e.getManagerId())).findFirst();
         if(ceoOptional.isEmpty()){
-            throw new ApplicationException("Data source issue."); //Assumption 2 mentioned in readme file
+            throw new ApplicationException("Data source issue::CEO info not provided."); //Assumption 2 mentioned in readme file
         }
         Employee ceo = ceoOptional.get();
         return ceo;
