@@ -9,16 +9,14 @@ import java.util.Set;
  * @author BibhavKumar
  */
 public class Employee {
-    private Long id;
-    private String firstName;
-    private String lastName;
-
-    private Double salary;
-    private Long managerId;
-
+    private final Long id;
+    private final String firstName;
+    private final String lastName;
+    private final Double salary;
+    private final Long managerId;
     private Set<Employee> subOrdinates;
 
-    public Employee(Long id, String firstName, String lastName, Double salary, Long managerId) {
+    public Employee(final Long id, final String firstName, final String lastName, final Double salary, final Long managerId) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
