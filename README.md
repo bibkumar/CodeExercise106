@@ -55,6 +55,7 @@ To install this project, follow these steps:
    java -jar .\target\CodeExercise106-1.0-SNAPSHOT.jar "<data file path>"
    For Example: - 
     java -jar .\target\CodeExercise106-1.0-SNAPSHOT.jar "src/main/resources/data.csv"
+   java -jar .\target\CodeExercise106-1.0-SNAPSHOT.jar "src/main/resources/more_data.csv"
     ```
 
 ### Running tests
@@ -72,4 +73,3 @@ mvn clean install
 - All Managers are Employees but not all Employees are Managers
 - For my use case real world mapping of Manager and Employee object are sufficient.
 - There may be certain Employees which are not managers.
-- CSV file path is hard coded in Main.java to facilitate is run on IDE.
