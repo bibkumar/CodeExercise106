@@ -23,11 +23,11 @@ public class ManagerSalaryComparisonService {
         return employees.stream()
                 .filter(e -> Objects.nonNull(e.getSubOrdinates()) && !e.getSubOrdinates().isEmpty())
                 .map(m -> {
-                    Double sal = m.getSalary();
-                    double avg = m.getSubOrdinates().stream().mapToDouble(Employee::getSalary).average().orElse(0);
                     Manager manager = new Manager();
-                    manager.setSalary(sal);
                     manager.setId(m.getId());
+                    Double sal = m.getSalary();
+                    manager.setSalary(sal);
+                    double avg = m.getSubOrdinates().stream().mapToDouble(Employee::getSalary).average().orElse(0);
                     manager.setAvgSubOrdinatesSalary(avg);
                     if (Double.compare(sal, avg * 1.2) != 1) { //earning less
                         manager.setEarningLess(true);

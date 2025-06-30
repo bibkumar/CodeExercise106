@@ -41,7 +41,6 @@ public class EmployeeReportingLineCalculationService {
         if(ceoOptional.isEmpty()){
             throw new ApplicationException("Data source issue::CEO info not provided."); //Assumption 2 mentioned in readme file
         }
-        Employee ceo = ceoOptional.get();
-        return ceo;
+        return ceoOptional.get();
     }
 }
