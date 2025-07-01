@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  *
  * @author BibhavKumar
  */
-public class ReportService {
+public class ReportService implements IReportService {
     private final IManagerSalaryComparisonService managerSalaryComparisonService;
     private final IEmployeeReportingLineCalculationService employeeReportingLineCalculationService;
 

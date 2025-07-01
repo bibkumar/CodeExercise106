@@ -29,7 +29,7 @@ public class Main {
 
         IManagerSalaryComparisonService managerSalaryComparisonService = new ManagerSalaryComparisonService();
         IEmployeeReportingLineCalculationService employeeReportingLineCalculationService = new EmployeeReportingLineCalculationService();
-        ReportService reportService = new ReportService(managerSalaryComparisonService, employeeReportingLineCalculationService);
+        IReportService reportService = new ReportService(managerSalaryComparisonService, employeeReportingLineCalculationService);
 
         System.out.printf(OUTPUT_LINE_DECORATOR);
         System.out.printf(EARNING_LESS_HEADER_MESSAGE);
