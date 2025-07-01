@@ -26,7 +26,8 @@ public class EmployeeService implements IEmployeeService{
     }
 
     /**
-     * Get employees from data source.
+     * Retrieves employee data from a data source, converts it into Employee entities,
+     * and builds the reporting structure by populating each employee's subordinates.
      *
      * @return Set of employees.
      */

@@ -24,10 +24,11 @@ public class ManagerSalaryComparisonService implements IManagerSalaryComparisonS
     private static final int EARN_MORE_COMPARISON_OPERAND = 0;
 
     /**
-     * Fetch all managers with salary comparison with theirs subordinates.
+     * Computes salary comparisons for managers relative to their direct subordinates.
      *
-     * @param employees set of employees
-     * @return Managers with salary comparison.
+     * @param employees A Set<Employee> representing all employees in the organization.
+     * @return A Set<Manager> objects,
+     * each representing a manager with additional information about how their salary compares to the average salary of their direct reports.
      */
     public Set<Manager> fetchManagersWithSalaryComparison(final Set<Employee> employees) {
         return employees.stream()

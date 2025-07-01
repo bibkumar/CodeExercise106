@@ -16,6 +16,8 @@ public class EmployeeReportingLineCalculationService implements IEmployeeReporti
 
     /**
      * Get Employees except ceo with their manager hierarchy list except Ceo.
+     * This method is responsible for calculating, for each employee (except the CEO),
+     * the list of their managers (by ID) up to but not including the CEO.
      *
      * @param employees set of employees
      * @return Map with key as Employee id and value as list of id of managers b/w the employee and Ceo.
