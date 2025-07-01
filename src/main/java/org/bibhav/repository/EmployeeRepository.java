@@ -1,6 +1,7 @@
 package org.bibhav.repository;
 
 import org.bibhav.exception.ApplicationException;
+import org.bibhav.exception.BadRequestException;
 import org.bibhav.model.dto.EmployeeDto;
 
 import java.util.List;
@@ -11,5 +12,5 @@ import java.util.List;
  */
 public interface EmployeeRepository {
 
-    List<EmployeeDto> getEmployeeDtoList() throws ApplicationException;
+    List<EmployeeDto> getEmployeeDtoList() throws ApplicationException, BadRequestException;
 }

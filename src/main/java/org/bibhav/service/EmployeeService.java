@@ -1,6 +1,7 @@
 package org.bibhav.service;
 
 import org.bibhav.exception.ApplicationException;
+import org.bibhav.exception.BadRequestException;
 import org.bibhav.util.EmployeeUtility;
 import org.bibhav.model.entity.Employee;
 import org.bibhav.model.dto.EmployeeDto;
@@ -29,7 +30,7 @@ public class EmployeeService {
      *
      * @return Set of employees.
      */
-    public Set<Employee> getEmployees() throws ApplicationException {
+    public Set<Employee> getEmployees() throws ApplicationException, BadRequestException {
         List<EmployeeDto> allEmployees = employeeRepository.getEmployeeDtoList();
         return allEmployees.stream()
                 .map(e -> {

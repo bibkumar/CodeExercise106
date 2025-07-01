@@ -6,6 +6,7 @@ import org.bibhav.model.entity.Employee;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Set;
 
@@ -29,32 +30,32 @@ class ReportServiceTest {
 
     @Test
     void getUnderpaidManagersWithDisparity() {
-        Set<Employee> employees = TestUtility.getEmployeesWithSubOrdinatesSalaryConfigurable(45000D);
-        Map<Long, Double> overpaidManagersWithDisparity = reportService.getUnderpaidManagersWithDisparity(employees);
+        Set<Employee> employees = TestUtility.getEmployeesWithSubOrdinatesSalaryConfigurable(new BigDecimal("45000"));
+        Map<Long, BigDecimal> overpaidManagersWithDisparity = reportService.getUnderpaidManagersWithDisparity(employees);
 
-        assertEquals(Double.valueOf(15000), overpaidManagersWithDisparity.get(124L));
+        assertEquals(new BigDecimal("15000.00"), overpaidManagersWithDisparity.get(124L));
     }
 
     @Test
     void getUnderpaidManagersWithDisparity_empty() {
-        Set<Employee> employees = TestUtility.getEmployeesWithSubOrdinatesSalaryConfigurable(61000D);
-        Map<Long, Double> overpaidManagersWithDisparity = reportService.getUnderpaidManagersWithDisparity(employees);
+        Set<Employee> employees = TestUtility.getEmployeesWithSubOrdinatesSalaryConfigurable(new BigDecimal("61000"));
+        Map<Long, BigDecimal> overpaidManagersWithDisparity = reportService.getUnderpaidManagersWithDisparity(employees);
 
         assertTrue(overpaidManagersWithDisparity.isEmpty());
     }
 
     @Test
     void getOverpaidManagersWithDisparity() {
-        Set<Employee> employees = TestUtility.getEmployeesWithSubOrdinatesSalaryConfigurable(76000D);
-        Map<Long, Double> overpaidManagersWithDisparity = reportService.getOverpaidManagersWithDisparity(employees);
+        Set<Employee> employees = TestUtility.getEmployeesWithSubOrdinatesSalaryConfigurable(new BigDecimal("76000"));
+        Map<Long, BigDecimal> overpaidManagersWithDisparity = reportService.getOverpaidManagersWithDisparity(employees);
 
-        assertEquals(Double.valueOf(1000), overpaidManagersWithDisparity.get(124L));
+        assertEquals(new BigDecimal("1000.00"), overpaidManagersWithDisparity.get(124L));
     }
 
     @Test
     void getOverpaidManagersWithDisparity_empty() {
-        Set<Employee> employees = TestUtility.getEmployeesWithSubOrdinatesSalaryConfigurable(61000D);
-        Map<Long, Double> overpaidManagersWithDisparity = reportService.getOverpaidManagersWithDisparity(employees);
+        Set<Employee> employees = TestUtility.getEmployeesWithSubOrdinatesSalaryConfigurable(new BigDecimal("61000"));
+        Map<Long, BigDecimal> overpaidManagersWithDisparity = reportService.getOverpaidManagersWithDisparity(employees);
 
         assertTrue(overpaidManagersWithDisparity.isEmpty());
     }

@@ -1,6 +1,7 @@
 package org.bibhav.service;
 
 import org.bibhav.exception.ApplicationException;
+import org.bibhav.exception.BadRequestException;
 import org.bibhav.model.entity.Employee;
 import org.bibhav.repository.FileEmployeeRepository;
 import org.junit.jupiter.api.Assertions;
@@ -24,7 +25,7 @@ class EmployeeServiceTest {
     }
 
     @Test
-    void fetchAllEmployees() throws ApplicationException {
+    void fetchAllEmployees() throws ApplicationException, BadRequestException {
         Set<Employee> employees = employeeService.getEmployees();
 
         Assertions.assertEquals(2, employees.size());

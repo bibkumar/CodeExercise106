@@ -3,6 +3,8 @@ package org.bibhav.service;
 import org.bibhav.model.entity.Employee;
 import org.bibhav.model.entity.Manager;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -16,7 +18,7 @@ public class ManagerSalaryComparisonService {
     /**
      * Fetch all managers with salary comparison with theirs subordinates.
      *
-     * @param employees
+     * @param employees set of employees
      * @return Managers with salary comparison.
      */
     public Set<Manager> fetchManagersWithSalaryComparison(final Set<Employee> employees) {
@@ -25,17 +27,22 @@ public class ManagerSalaryComparisonService {
                 .map(m -> {
                     Manager manager = new Manager();
                     manager.setId(m.getId());
-                    Double sal = m.getSalary();
+                    BigDecimal sal = m.getSalary();
                     manager.setSalary(sal);
-                    double avg = m.getSubOrdinates().stream().mapToDouble(Employee::getSalary).average().orElse(0);
+                    BigDecimal sumOfSalaryOfSubordinates = m.getSubOrdinates().stream()
+                            .map(Employee::getSalary)
+                            .reduce(BigDecimal.ZERO, BigDecimal::add);
+                    BigDecimal avg = sumOfSalaryOfSubordinates.divide(new BigDecimal(m.getSubOrdinates().size()), RoundingMode.DOWN);
                     manager.setAvgSubOrdinatesSalary(avg);
-                    if (Double.compare(sal, avg * 1.2) != 1) { //earning less
+                    BigDecimal earningLessThreshold = avg.multiply(new BigDecimal("1.2")).setScale(2, RoundingMode.DOWN);
+                    if (sal.compareTo(earningLessThreshold) < 1) {
                         manager.setEarningLess(true);
-                        manager.setByAmount(avg * 1.2 - sal);
+                        manager.setByAmount(earningLessThreshold.subtract(sal));
                     }
-                    if (Double.compare(sal, avg * 1.5) == 1) { //earning more
+                    BigDecimal earningMoreThreshold = avg.multiply(new BigDecimal("1.5")).setScale(2, RoundingMode.DOWN);
+                    if (sal.compareTo(earningMoreThreshold) > 0) {
                         manager.setEarningMore(true);
-                        manager.setByAmount(sal - avg * 1.5);
+                        manager.setByAmount(sal.subtract(earningMoreThreshold));
                     }
                     return manager;
                 })

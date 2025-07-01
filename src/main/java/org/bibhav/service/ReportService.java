@@ -4,6 +4,7 @@ import org.bibhav.exception.ApplicationException;
 import org.bibhav.model.entity.Employee;
 import org.bibhav.model.entity.Manager;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,7 +31,7 @@ public class ReportService {
      * @param employees
      * @return Map with key as Employee Id and Value is Disparity amount.
      */
-    public Map<Long, Double> getUnderpaidManagersWithDisparity(final Set<Employee> employees) {
+    public Map<Long, BigDecimal> getUnderpaidManagersWithDisparity(final Set<Employee> employees) {
         Set<Manager> managers = managerSalaryComparisonService.fetchManagersWithSalaryComparison(employees);
         return managers.stream()
                 .filter(m -> Boolean.TRUE.equals(m.getEarningLess()))
@@ -43,7 +44,7 @@ public class ReportService {
      * @param employees
      * @return Map with key as Employee Id and Value is Disparity amount.
      */
-    public Map<Long, Double> getOverpaidManagersWithDisparity(final Set<Employee> employees) {
+    public Map<Long, BigDecimal> getOverpaidManagersWithDisparity(final Set<Employee> employees) {
         Set<Manager> managers = managerSalaryComparisonService.fetchManagersWithSalaryComparison(employees);
         return managers.stream()
                 .filter(m -> Boolean.TRUE.equals(m.getEarningMore()))

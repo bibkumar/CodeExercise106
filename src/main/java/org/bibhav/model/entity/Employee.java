@@ -1,5 +1,6 @@
 package org.bibhav.model.entity;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 import java.util.Set;
 
@@ -12,11 +13,11 @@ public class Employee {
     private final Long id;
     private final String firstName;
     private final String lastName;
-    private final Double salary;
+    private final BigDecimal salary;
     private final Long managerId;
     private Set<Employee> subOrdinates;
 
-    public Employee(final Long id, final String firstName, final String lastName, final Double salary, final Long managerId) {
+    public Employee(final Long id, final String firstName, final String lastName, final BigDecimal salary, final Long managerId) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -29,7 +30,7 @@ public class Employee {
     }
 
 
-    public Double getSalary() {
+    public BigDecimal getSalary() {
         return salary;
     }
 

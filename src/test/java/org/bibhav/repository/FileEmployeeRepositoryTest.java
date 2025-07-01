@@ -1,6 +1,7 @@
 package org.bibhav.repository;
 
 import org.bibhav.exception.ApplicationException;
+import org.bibhav.exception.BadRequestException;
 import org.bibhav.model.dto.EmployeeDto;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -24,7 +25,7 @@ class FileEmployeeRepositoryTest {
     }
 
     @Test
-    void getEmployeeDtoList_emptyDataFileShouldReturnZeroRecords() throws ApplicationException {
+    void getEmployeeDtoList_emptyDataFileShouldReturnZeroRecords() throws ApplicationException, BadRequestException {
         FileEmployeeRepository emptyFileEmployeeRepository = new FileEmployeeRepository("src/test/resources/empty_test_data.csv");
         List<EmployeeDto> allEmployees = emptyFileEmployeeRepository.getEmployeeDtoList();
 
@@ -32,7 +33,7 @@ class FileEmployeeRepositoryTest {
     }
 
     @Test
-    void getEmployeeDtoList_shouldSkipFirstLineAsHeader() throws ApplicationException {
+    void getEmployeeDtoList_shouldSkipFirstLineAsHeader() throws ApplicationException, BadRequestException {
         FileEmployeeRepository fileEmployeeRepository = new FileEmployeeRepository("src/test/resources/only_header_test_data.csv");
         List<EmployeeDto> allEmployees = fileEmployeeRepository.getEmployeeDtoList();
 
@@ -40,7 +41,7 @@ class FileEmployeeRepositoryTest {
     }
 
     @Test
-    void getEmployeeDtoList_properFileTest() throws ApplicationException {
+    void getEmployeeDtoList_properFileTest() throws ApplicationException, BadRequestException {
         FileEmployeeRepository fileEmployeeRepository = new FileEmployeeRepository("src/test/resources/test_data.csv");
         List<EmployeeDto> allEmployees = fileEmployeeRepository.getEmployeeDtoList();
 

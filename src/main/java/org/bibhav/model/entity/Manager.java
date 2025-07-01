@@ -1,6 +1,8 @@
 package org.bibhav.model.entity;
 
 
+import java.math.BigDecimal;
+
 /**
  * Manager POJO.
  *
@@ -8,11 +10,11 @@ package org.bibhav.model.entity;
  */
 public class Manager {
     private Long id;
-    private Double salary;
-    private Double avgSubOrdinatesSalary;
+    private BigDecimal salary;
+    private BigDecimal avgSubOrdinatesSalary;
     private Boolean earningLess;
     private Boolean earningMore;
-    private Double byAmount;
+    private BigDecimal byAmount;
 
     public Long getId() {
         return id;
@@ -22,16 +24,16 @@ public class Manager {
         this.id = id;
     }
 
-    public Double getSalary() {
+    public BigDecimal getSalary() {
         return salary;
     }
 
-    public void setSalary(Double salary) {
+    public void setSalary(BigDecimal salary) {
         this.salary = salary;
     }
 
 
-    public void setAvgSubOrdinatesSalary(Double avgSubOrdinatesSalary) {
+    public void setAvgSubOrdinatesSalary(BigDecimal avgSubOrdinatesSalary) {
         this.avgSubOrdinatesSalary = avgSubOrdinatesSalary;
     }
 
@@ -51,11 +53,11 @@ public class Manager {
         this.earningMore = earningMore;
     }
 
-    public Double getByAmount() {
+    public BigDecimal getByAmount() {
         return byAmount;
     }
 
-    public void setByAmount(Double byAmount) {
+    public void setByAmount(BigDecimal byAmount) {
         this.byAmount = byAmount;
     }
 
