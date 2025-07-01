@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
  *
  * @author BibhavKumar
  */
-public class ManagerSalaryComparisonService {
+public class ManagerSalaryComparisonService implements IManagerSalaryComparisonService{
     /**
      * Fetch all managers with salary comparison with theirs subordinates.
      *

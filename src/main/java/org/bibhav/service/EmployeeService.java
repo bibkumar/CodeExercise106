@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
  * @author BibhavKumar
  */
 
-public class EmployeeService {
+public class EmployeeService implements IEmployeeService{
     private final EmployeeRepository employeeRepository;
 
     public EmployeeService(final EmployeeRepository employeeRepository) {

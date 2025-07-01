@@ -5,10 +5,7 @@ import org.bibhav.exception.BadRequestException;
 import org.bibhav.model.entity.Employee;
 import org.bibhav.repository.EmployeeRepository;
 import org.bibhav.repository.FileEmployeeRepository;
-import org.bibhav.service.EmployeeReportingLineCalculationService;
-import org.bibhav.service.EmployeeService;
-import org.bibhav.service.ManagerSalaryComparisonService;
-import org.bibhav.service.ReportService;
+import org.bibhav.service.*;
 
 import java.math.BigDecimal;
 import java.util.Map;
@@ -30,11 +27,11 @@ public class Main {
         String dataFilePath = args[0];
         System.out.println("Data file path: - " + dataFilePath);
         EmployeeRepository fileEmployeeRepository = new FileEmployeeRepository(dataFilePath);
-        EmployeeService employeeService = new EmployeeService(fileEmployeeRepository);
+        IEmployeeService employeeService = new EmployeeService(fileEmployeeRepository);
         Set<Employee> employees = employeeService.getEmployees();
 
-        ManagerSalaryComparisonService managerSalaryComparisonService = new ManagerSalaryComparisonService();
-        EmployeeReportingLineCalculationService employeeReportingLineCalculationService = new EmployeeReportingLineCalculationService();
+        IManagerSalaryComparisonService managerSalaryComparisonService = new ManagerSalaryComparisonService();
+        IEmployeeReportingLineCalculationService employeeReportingLineCalculationService = new EmployeeReportingLineCalculationService();
         ReportService reportService = new ReportService(managerSalaryComparisonService, employeeReportingLineCalculationService);
 
         System.out.println(OUTPUT_LINE_DECORATOR);

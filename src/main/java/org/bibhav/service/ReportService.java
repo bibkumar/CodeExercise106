@@ -17,10 +17,10 @@ import java.util.stream.Collectors;
  * @author BibhavKumar
  */
 public class ReportService {
-    private final ManagerSalaryComparisonService managerSalaryComparisonService;
-    private final EmployeeReportingLineCalculationService employeeReportingLineCalculationService;
+    private final IManagerSalaryComparisonService managerSalaryComparisonService;
+    private final IEmployeeReportingLineCalculationService employeeReportingLineCalculationService;
 
-    public ReportService(final ManagerSalaryComparisonService managerSalaryComparisonService, final EmployeeReportingLineCalculationService employeeReportingLineCalculationService) {
+    public ReportService(final IManagerSalaryComparisonService managerSalaryComparisonService, final IEmployeeReportingLineCalculationService employeeReportingLineCalculationService) {
         this.managerSalaryComparisonService = managerSalaryComparisonService;
         this.employeeReportingLineCalculationService = employeeReportingLineCalculationService;
     }
