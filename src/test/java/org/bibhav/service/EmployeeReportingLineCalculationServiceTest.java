@@ -1,11 +1,12 @@
 package org.bibhav.service;
 
-import org.bibhav.TestUtility;
 import org.bibhav.exception.BadRequestException;
 import org.bibhav.model.entity.Employee;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -29,7 +30,11 @@ class EmployeeReportingLineCalculationServiceTest {
 
     @Test
     void getEmployeeReportingLine_shortReportingLine() throws BadRequestException {
-        Set<Employee> employees = TestUtility.getEmployeesWithCeoAndShortReportingLine();
+        Set<Employee> employees1 = new HashSet<>();
+        employees1.add(new Employee(124L, "Martin", "Chekov", new BigDecimal("45000"), null, null));
+        employees1.add(new Employee(300L, "Alice", "Hasacat", new BigDecimal("50000"), 124L, null));
+        employees1.add(new Employee(301L, "Alice", "Hasacat", new BigDecimal("50000"), 300L, null));
+        Set<Employee> employees = employees1;
         Map<Long, List<Long>> employeeReportingLine = employeeReportingLineCalculationService.getEmployeeIdAndReportingLineListMap(employees);
 
         assertEquals(2, employeeReportingLine.size());
@@ -40,7 +45,15 @@ class EmployeeReportingLineCalculationServiceTest {
 
     @Test
     void getEmployeeReportingLine_longReportingLine() throws BadRequestException {
-        Set<Employee> employees = TestUtility.getEmployeesWithCeoAndLongReportingLine();
+        Set<Employee> employees1 = new HashSet<>();
+        employees1.add(new Employee(124L, "Martin", "Chekov", new BigDecimal("45000"), null, null));
+        employees1.add(new Employee(300L, "Alice", "Hasacat", new BigDecimal("50000"), 124L, null));
+        employees1.add(new Employee(301L, "Alice", "Hasacat", new BigDecimal("50000"), 300L, null));
+        employees1.add(new Employee(302L, "Alice", "Hasacat", new BigDecimal("50000"), 301L, null));
+        employees1.add(new Employee(303L, "Alice", "Hasacat", new BigDecimal("50000"), 302L, null));
+        employees1.add(new Employee(304L, "Alice", "Hasacat", new BigDecimal("50000"), 303L, null));
+        employees1.add(new Employee(305L, "Alice", "Hasacat", new BigDecimal("50000"), 304L, null));
+        Set<Employee> employees = employees1;
         Map<Long, List<Long>> employeeReportingLine = employeeReportingLineCalculationService.getEmployeeIdAndReportingLineListMap(employees);
 
         assertEquals(6, employeeReportingLine.size());

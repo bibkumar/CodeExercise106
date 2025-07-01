@@ -1,12 +1,12 @@
 package org.bibhav.service;
 
-import org.bibhav.TestUtility;
 import org.bibhav.model.entity.Employee;
 import org.bibhav.model.entity.Manager;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
@@ -27,7 +27,12 @@ class ManagerSalaryComparisonServiceTest {
 
     @Test
     void fetchManagersWithSalaryComparison_ManagerEarningLess() {
-        Set<Employee> employees = TestUtility.getEmployeesWithSubOrdinatesSalaryConfigurable(new BigDecimal("45000"));
+        Set<Employee> employees1 = new HashSet<>();
+        Employee subOrdinate = new Employee(300L, "Alice", "Hasacat", new BigDecimal("50000"), 124L, null);
+        Employee employee = new Employee(124L, "Martin", "Chekov", new BigDecimal("45000"), 123L, Set.of(subOrdinate));
+        employees1.add(employee);
+        employees1.add(subOrdinate);
+        Set<Employee> employees = employees1;
 
         Set<Manager> managers = managerSalaryComparisonService.fetchManagersWithSalaryComparison(employees);
 
@@ -45,7 +50,12 @@ class ManagerSalaryComparisonServiceTest {
 
     @Test
     void fetchManagersWithSalaryComparison_ManagerEarningMore() {
-        Set<Employee> employees = TestUtility.getEmployeesWithSubOrdinatesSalaryConfigurable(new BigDecimal("76000"));
+        Set<Employee> employees1 = new HashSet<>();
+        Employee subOrdinate = new Employee(300L, "Alice", "Hasacat", new BigDecimal("50000"), 124L, null);
+        Employee employee = new Employee(124L, "Martin", "Chekov", new BigDecimal("76000"), 123L, Set.of(subOrdinate));
+        employees1.add(employee);
+        employees1.add(subOrdinate);
+        Set<Employee> employees = employees1;
 
         Set<Manager> managers = managerSalaryComparisonService.fetchManagersWithSalaryComparison(employees);
 
@@ -62,7 +72,12 @@ class ManagerSalaryComparisonServiceTest {
 
     @Test
     void fetchManagersWithSalaryComparison_ManagerEarningNormal() {
-        Set<Employee> employees = TestUtility.getEmployeesWithSubOrdinatesSalaryConfigurable(new BigDecimal("60001"));
+        Set<Employee> employees1 = new HashSet<>();
+        Employee subOrdinate = new Employee(300L, "Alice", "Hasacat", new BigDecimal("50000"), 124L, null);
+        Employee employee = new Employee(124L, "Martin", "Chekov", new BigDecimal("60001"), 123L, Set.of(subOrdinate));
+        employees1.add(employee);
+        employees1.add(subOrdinate);
+        Set<Employee> employees = employees1;
 
         Set<Manager> managers = managerSalaryComparisonService.fetchManagersWithSalaryComparison(employees);
 
