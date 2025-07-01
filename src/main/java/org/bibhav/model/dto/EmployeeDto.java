@@ -12,7 +12,7 @@ import static org.bibhav.util.AppConstants.INVALID_DATA_FORMAT_ERROR;
  *
  * @author BibhavKumar
  */
-public class EmployeeDto {
+public final class EmployeeDto {
     private final Long id;
     private final String firstName;
     private final String lastName;

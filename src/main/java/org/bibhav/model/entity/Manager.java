@@ -8,7 +8,7 @@ import java.math.BigDecimal;
  *
  * @author BibhavKumar
  */
-public class Manager {
+public final class Manager {
     private final Long id;
     private final BigDecimal salary;
     private final BigDecimal avgSubOrdinatesSalary;

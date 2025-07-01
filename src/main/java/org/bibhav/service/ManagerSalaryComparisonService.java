@@ -23,13 +23,13 @@ public class ManagerSalaryComparisonService {
      */
     public Set<Manager> fetchManagersWithSalaryComparison(final Set<Employee> employees) {
         return employees.stream()
-                .filter(e -> Objects.nonNull(e.getSubOrdinates()) && !e.getSubOrdinates().isEmpty())
+                .filter(e -> Objects.nonNull(e.getSubordinates()) && !e.getSubordinates().isEmpty())
                 .map(m -> {
                     BigDecimal sal = m.getSalary();
-                    BigDecimal sumOfSalaryOfSubordinates = m.getSubOrdinates().stream()
+                    BigDecimal sumOfSalaryOfSubordinates = m.getSubordinates().stream()
                             .map(Employee::getSalary)
                             .reduce(BigDecimal.ZERO, BigDecimal::add);
-                    BigDecimal avg = sumOfSalaryOfSubordinates.divide(new BigDecimal(m.getSubOrdinates().size()), RoundingMode.DOWN);
+                    BigDecimal avg = sumOfSalaryOfSubordinates.divide(new BigDecimal(m.getSubordinates().size()), RoundingMode.DOWN);
                     BigDecimal earningLessThreshold = avg.multiply(new BigDecimal("1.2")).setScale(2, RoundingMode.DOWN);
                     BigDecimal byAmount = null;
                     Boolean earningLess = null;
