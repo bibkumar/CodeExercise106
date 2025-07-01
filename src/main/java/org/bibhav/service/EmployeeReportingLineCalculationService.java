@@ -1,6 +1,6 @@
 package org.bibhav.service;
 
-import org.bibhav.exception.ApplicationException;
+import org.bibhav.exception.BadRequestException;
 import org.bibhav.model.entity.Employee;
 
 import java.util.*;
@@ -16,10 +16,10 @@ public class EmployeeReportingLineCalculationService {
     /**
      * Get Employees except ceo with their manager hierarchy list except Ceo.
      *
-     * @param employees
-     * @return Map with key as Employee Id and value as list of Id of managers b/w the employee and Ceo.
+     * @param employees set of employees
+     * @return Map with key as Employee id and value as list of id of managers b/w the employee and Ceo.
      */
-    Map<Long, List<Long>> getEmployeeIdAndReportingLineListMap(final Set<Employee> employees) throws ApplicationException {
+    Map<Long, List<Long>> getEmployeeIdAndReportingLineListMap(final Set<Employee> employees) throws BadRequestException {
         Employee ceo = getCompanyCeo(employees);
         Map<Long, Employee> employeeMap = employees.stream().collect(Collectors.toMap(Employee::getId, e -> e));
         return employees.stream()
@@ -35,11 +35,11 @@ public class EmployeeReportingLineCalculationService {
                 }));
     }
 
-    private static Employee getCompanyCeo(final Set<Employee> employees) throws ApplicationException {
+    private Employee getCompanyCeo(final Set<Employee> employees) throws BadRequestException {
         Optional<Employee> ceoOptional = employees.stream()
                 .filter(e -> Objects.isNull(e.getManagerId())).findFirst();
-        if(ceoOptional.isEmpty()){
-            throw new ApplicationException("Data source issue::CEO info not provided."); //Assumption 2 mentioned in readme file
+        if (ceoOptional.isEmpty()) {
+            throw new BadRequestException("Data source issue::CEO info not provided.");
         }
         return ceoOptional.get();
     }

@@ -5,6 +5,8 @@ import org.bibhav.exception.BadRequestException;
 import java.math.BigDecimal;
 import java.util.List;
 
+import static org.bibhav.util.AppConstants.INVALID_DATA_FORMAT_ERROR;
+
 /**
  * Employee DTO.
  *
@@ -29,7 +31,7 @@ public class EmployeeDto {
                 this.managerId = null;
             }
         } catch (NumberFormatException e) {
-            throw new BadRequestException("Invalid data format in processing file");
+            throw new BadRequestException(INVALID_DATA_FORMAT_ERROR);
         }
     }
 

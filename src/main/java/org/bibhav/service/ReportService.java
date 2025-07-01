@@ -1,6 +1,6 @@
 package org.bibhav.service;
 
-import org.bibhav.exception.ApplicationException;
+import org.bibhav.exception.BadRequestException;
 import org.bibhav.model.entity.Employee;
 import org.bibhav.model.entity.Manager;
 
@@ -28,8 +28,8 @@ public class ReportService {
     /**
      * Get underpaid managers with disparity amount.
      *
-     * @param employees
-     * @return Map with key as Employee Id and Value is Disparity amount.
+     * @param employees set of employees
+     * @return Map with key as Employee id and Value is Disparity amount.
      */
     public Map<Long, BigDecimal> getUnderpaidManagersWithDisparity(final Set<Employee> employees) {
         Set<Manager> managers = managerSalaryComparisonService.fetchManagersWithSalaryComparison(employees);
@@ -41,8 +41,8 @@ public class ReportService {
     /**
      * Get overpaid employees with disparity amount.
      *
-     * @param employees
-     * @return Map with key as Employee Id and Value is Disparity amount.
+     * @param employees set of employees
+     * @return Map with key as Employee id and Value is Disparity amount.
      */
     public Map<Long, BigDecimal> getOverpaidManagersWithDisparity(final Set<Employee> employees) {
         Set<Manager> managers = managerSalaryComparisonService.fetchManagersWithSalaryComparison(employees);
@@ -52,12 +52,12 @@ public class ReportService {
     }
 
     /**
-     * Get Employees with too long reporting line; employees who has more than 4 managers b/w them and CEO.
+     * Get Employees with too long reporting line; employees who have more than 4 managers b/w them and CEO.
      *
-     * @param employees
-     * @return Map with key as Employee Id and Value is Disparity in managers count b/w ceo and them.
+     * @param employees set of employees
+     * @return Map with key as Employee id and Value is Disparity in managers count b/w ceo and them.
      */
-    public Map<Long, Integer> getEmployeesWithTooLongReportingLine(final Set<Employee> employees) throws ApplicationException {
+    public Map<Long, Integer> getEmployeesWithTooLongReportingLine(final Set<Employee> employees) throws BadRequestException {
         Map<Long, List<Long>> employeeReportingLine = employeeReportingLineCalculationService.getEmployeeIdAndReportingLineListMap(employees);
         Map<Long, Integer> employeesWithTooLongReportingLine = new HashMap<>();
         employeeReportingLine.forEach((key, value) -> {

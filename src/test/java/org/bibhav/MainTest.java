@@ -1,14 +1,22 @@
 package org.bibhav;
 
-import org.bibhav.exception.ApplicationException;
 import org.bibhav.exception.BadRequestException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class MainTest {
 
     @Test
-    void main_justTestAppInvocationWithOutAsserts() throws ApplicationException, BadRequestException {
-        String[] args = new String[]{"src/main/resources/more_data.csv"};
-        Main.main(args);
+    void testMainWithInValidInputEmptyArg() {
+        String[] args = new String[]{""};
+        BadRequestException badRequestException = Assertions.assertThrows(BadRequestException.class, () -> Main.main(args));
+        Assertions.assertEquals("Data file path is required as an argument.", badRequestException.getMessage());
+    }
+
+    @Test
+    void testMainWithInValidInputNoArg() {
+        String[] args = new String[]{};
+        BadRequestException badRequestException = Assertions.assertThrows(BadRequestException.class, () -> Main.main(args));
+        Assertions.assertEquals("Data file path is required as an argument.", badRequestException.getMessage());
     }
 }

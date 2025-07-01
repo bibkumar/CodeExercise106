@@ -1,7 +1,7 @@
 package org.bibhav.service;
 
 import org.bibhav.TestUtility;
-import org.bibhav.exception.ApplicationException;
+import org.bibhav.exception.BadRequestException;
 import org.bibhav.model.entity.Employee;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -61,7 +61,7 @@ class ReportServiceTest {
     }
 
     @Test
-    void getEmployeesWithTooLongReportingLine_absent() throws ApplicationException {
+    void getEmployeesWithTooLongReportingLine_absent() throws BadRequestException {
         Set<Employee> employees = TestUtility.getEmployeesWithCeoAndShortReportingLine();
         Map<Long, Integer> employeesWithTooLongReportingLine = reportService.getEmployeesWithTooLongReportingLine(employees);
 
@@ -69,7 +69,7 @@ class ReportServiceTest {
     }
 
     @Test
-    void getEmployeesWithTooLongReportingLine_present() throws ApplicationException {
+    void getEmployeesWithTooLongReportingLine_present() throws BadRequestException {
         Set<Employee> employees = TestUtility.getEmployeesWithCeoAndLongReportingLine();
         Map<Long, Integer> employeesWithTooLongReportingLine = reportService.getEmployeesWithTooLongReportingLine(employees);
 

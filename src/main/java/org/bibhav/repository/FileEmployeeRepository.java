@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static org.bibhav.util.AppConstants.INVALID_DATA_FORMAT_ERROR;
+
 /**
  * Employee Repository mapped to file as data source.
  *
@@ -32,11 +34,11 @@ public class FileEmployeeRepository implements EmployeeRepository {
             List<EmployeeDto> employeeDtoList = new ArrayList<>();
             for (String line : linesLst) {
                 if (line == null || line.isEmpty()) {
-                    throw new BadRequestException("Invalid data format in processing file");
+                    throw new BadRequestException(INVALID_DATA_FORMAT_ERROR);
                 }
                 List<String> lineLst = Arrays.asList(line.split(","));
                 if (lineLst.size() < 4 || lineLst.size() > 5) {
-                    throw new BadRequestException("Invalid data format in processing file");
+                    throw new BadRequestException(INVALID_DATA_FORMAT_ERROR);
                 }
                 EmployeeDto employeeDto = new EmployeeDto(lineLst);
                 employeeDtoList.add(employeeDto);

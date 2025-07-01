@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.bibhav.util.AppConstants.INVALID_DATA_FORMAT_ERROR;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
@@ -17,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 class FileEmployeeRepositoryTest {
     @Test
-    void getEmployeeDtoList_absentFileShouldThrowApplicationException() throws ApplicationException {
+    void getEmployeeDtoList_absentFileShouldThrowApplicationException() {
         FileEmployeeRepository emptyFileEmployeeRepository = new FileEmployeeRepository("src/test/resources/absent_test_data.csv");
         ApplicationException applicationException = Assertions.assertThrows(ApplicationException.class, emptyFileEmployeeRepository::getEmployeeDtoList);
 
@@ -38,6 +39,14 @@ class FileEmployeeRepositoryTest {
         List<EmployeeDto> allEmployees = fileEmployeeRepository.getEmployeeDtoList();
 
         assertEquals(0, allEmployees.size());
+    }
+
+    @Test
+    void getEmployeeDtoList_shouldThrowBadRequestException() {
+        FileEmployeeRepository emptyFileEmployeeRepository = new FileEmployeeRepository("src/test/resources/bad_test_data.csv");
+        BadRequestException badRequestException = Assertions.assertThrows(BadRequestException.class, emptyFileEmployeeRepository::getEmployeeDtoList);
+
+        assertEquals(INVALID_DATA_FORMAT_ERROR, badRequestException.getMessage());
     }
 
     @Test

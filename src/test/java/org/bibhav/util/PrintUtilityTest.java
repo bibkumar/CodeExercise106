@@ -21,12 +21,12 @@ class PrintUtilityTest {
     private final PrintStream originalOut = System.out;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         System.setOut(new PrintStream(outputStreamCaptor));
     }
 
     @AfterEach
-    public void tearDown() {
+    void tearDown() {
         System.setOut(originalOut);
     }
 
