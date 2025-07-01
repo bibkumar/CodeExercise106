@@ -1,6 +1,7 @@
 package org.bibhav.model.entity;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -9,20 +10,27 @@ import java.util.Set;
  *
  * @author BibhavKumar
  */
-public class Employee {
+public final class Employee {
     private final Long id;
     private final String firstName;
     private final String lastName;
     private final BigDecimal salary;
     private final Long managerId;
-    private Set<Employee> subOrdinates;
+    private final Set<Employee> subOrdinates;
 
-    public Employee(final Long id, final String firstName, final String lastName, final BigDecimal salary, final Long managerId) {
+    public Employee(final Long id, final String firstName, final String lastName, final BigDecimal salary, final Long managerId, final Set<Employee> subOrdinates) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.salary = salary;
         this.managerId = managerId;
+        this.subOrdinates = subOrdinates == null ? Set.of() : Set.copyOf(subOrdinates);
+    }
+
+    public Employee withAddedSubordinates(Set<Employee> subOrdinates) {
+        Set<Employee> newSubordinates = new HashSet<>(this.subOrdinates);
+        newSubordinates.addAll(subOrdinates);
+        return new Employee(id, firstName, lastName, salary, managerId, newSubordinates);
     }
 
     public Long getId() {
@@ -42,10 +50,6 @@ public class Employee {
 
     public Set<Employee> getSubOrdinates() {
         return subOrdinates;
-    }
-
-    public void setSubOrdinates(Set<Employee> subOrdinates) {
-        this.subOrdinates = subOrdinates;
     }
 
 

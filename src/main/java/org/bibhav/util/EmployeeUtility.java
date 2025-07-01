@@ -14,6 +14,6 @@ public final class EmployeeUtility {
     }
 
     public static Employee getEmployeeFromEmployeeDto(final EmployeeDto employeeDto) {
-        return new Employee(employeeDto.getId(), employeeDto.getFirstName(), employeeDto.getLastName(), employeeDto.getSalary(), employeeDto.getManagerId());
+        return new Employee(employeeDto.getId(), employeeDto.getFirstName(), employeeDto.getLastName(), employeeDto.getSalary(), employeeDto.getManagerId(), null);
     }
 }

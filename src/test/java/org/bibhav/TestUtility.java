@@ -18,9 +18,8 @@ public class TestUtility {
 
     public static Set<Employee> getEmployeesWithSubOrdinatesSalaryConfigurable(BigDecimal salary) {
         Set<Employee> employees = new HashSet<>();
-        Employee employee = new Employee(124L, "Martin", "Chekov", salary, 123L);
-        Employee subOrdinate = new Employee(300L, "Alice", "Hasacat", new BigDecimal("50000"), 124L);
-        employee.setSubOrdinates(Set.of(subOrdinate));
+        Employee subOrdinate = new Employee(300L, "Alice", "Hasacat", new BigDecimal("50000"), 124L, null);
+        Employee employee = new Employee(124L, "Martin", "Chekov", salary, 123L, Set.of(subOrdinate));
         employees.add(employee);
         employees.add(subOrdinate);
         return employees;
@@ -28,21 +27,21 @@ public class TestUtility {
 
     public static Set<Employee> getEmployeesWithCeoAndShortReportingLine() {
         Set<Employee> employees = new HashSet<>();
-        employees.add(new Employee(124L, "Martin", "Chekov", new BigDecimal("45000"), null));
-        employees.add(new Employee(300L, "Alice", "Hasacat", new BigDecimal("50000"), 124L));
-        employees.add(new Employee(301L, "Alice", "Hasacat", new BigDecimal("50000"), 300L));
+        employees.add(new Employee(124L, "Martin", "Chekov", new BigDecimal("45000"), null, null));
+        employees.add(new Employee(300L, "Alice", "Hasacat", new BigDecimal("50000"), 124L, null));
+        employees.add(new Employee(301L, "Alice", "Hasacat", new BigDecimal("50000"), 300L, null));
         return employees;
     }
 
     public static Set<Employee> getEmployeesWithCeoAndLongReportingLine() {
         Set<Employee> employees = new HashSet<>();
-        employees.add(new Employee(124L, "Martin", "Chekov", new BigDecimal("45000"), null));
-        employees.add(new Employee(300L, "Alice", "Hasacat", new BigDecimal("50000"), 124L));
-        employees.add(new Employee(301L, "Alice", "Hasacat", new BigDecimal("50000"), 300L));
-        employees.add(new Employee(302L, "Alice", "Hasacat", new BigDecimal("50000"), 301L));
-        employees.add(new Employee(303L, "Alice", "Hasacat", new BigDecimal("50000"), 302L));
-        employees.add(new Employee(304L, "Alice", "Hasacat", new BigDecimal("50000"), 303L));
-        employees.add(new Employee(305L, "Alice", "Hasacat", new BigDecimal("50000"), 304L));
+        employees.add(new Employee(124L, "Martin", "Chekov", new BigDecimal("45000"), null, null));
+        employees.add(new Employee(300L, "Alice", "Hasacat", new BigDecimal("50000"), 124L, null));
+        employees.add(new Employee(301L, "Alice", "Hasacat", new BigDecimal("50000"), 300L, null));
+        employees.add(new Employee(302L, "Alice", "Hasacat", new BigDecimal("50000"), 301L, null));
+        employees.add(new Employee(303L, "Alice", "Hasacat", new BigDecimal("50000"), 302L, null));
+        employees.add(new Employee(304L, "Alice", "Hasacat", new BigDecimal("50000"), 303L, null));
+        employees.add(new Employee(305L, "Alice", "Hasacat", new BigDecimal("50000"), 304L, null));
         return employees;
     }
 }

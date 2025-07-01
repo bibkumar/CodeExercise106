@@ -2,10 +2,10 @@ package org.bibhav.service;
 
 import org.bibhav.exception.ApplicationException;
 import org.bibhav.exception.BadRequestException;
-import org.bibhav.util.EmployeeUtility;
-import org.bibhav.model.entity.Employee;
 import org.bibhav.model.dto.EmployeeDto;
+import org.bibhav.model.entity.Employee;
 import org.bibhav.repository.EmployeeRepository;
+import org.bibhav.util.EmployeeUtility;
 
 import java.util.List;
 import java.util.Objects;
@@ -39,8 +39,7 @@ public class EmployeeService {
                             .filter(s -> Objects.equals(employee.getId(), s.getManagerId()))
                             .map(EmployeeUtility::getEmployeeFromEmployeeDto)
                             .collect(Collectors.toSet());
-                    employee.setSubOrdinates(subordinates);
-                    return employee;
+                    return employee.withAddedSubordinates(subordinates);
                 })
                 .collect(Collectors.toSet());
     }

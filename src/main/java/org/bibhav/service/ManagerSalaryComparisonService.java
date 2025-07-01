@@ -25,26 +25,25 @@ public class ManagerSalaryComparisonService {
         return employees.stream()
                 .filter(e -> Objects.nonNull(e.getSubOrdinates()) && !e.getSubOrdinates().isEmpty())
                 .map(m -> {
-                    Manager manager = new Manager();
-                    manager.setId(m.getId());
                     BigDecimal sal = m.getSalary();
-                    manager.setSalary(sal);
                     BigDecimal sumOfSalaryOfSubordinates = m.getSubOrdinates().stream()
                             .map(Employee::getSalary)
                             .reduce(BigDecimal.ZERO, BigDecimal::add);
                     BigDecimal avg = sumOfSalaryOfSubordinates.divide(new BigDecimal(m.getSubOrdinates().size()), RoundingMode.DOWN);
-                    manager.setAvgSubOrdinatesSalary(avg);
                     BigDecimal earningLessThreshold = avg.multiply(new BigDecimal("1.2")).setScale(2, RoundingMode.DOWN);
+                    BigDecimal byAmount = null;
+                    Boolean earningLess = null;
+                    Boolean earningMore = null;
                     if (sal.compareTo(earningLessThreshold) < 1) {
-                        manager.setEarningLess(true);
-                        manager.setByAmount(earningLessThreshold.subtract(sal));
+                        earningLess = true;
+                        byAmount = earningLessThreshold.subtract(sal);
                     }
                     BigDecimal earningMoreThreshold = avg.multiply(new BigDecimal("1.5")).setScale(2, RoundingMode.DOWN);
                     if (sal.compareTo(earningMoreThreshold) > 0) {
-                        manager.setEarningMore(true);
-                        manager.setByAmount(sal.subtract(earningMoreThreshold));
+                        earningMore = true;
+                        byAmount = sal.subtract(earningMoreThreshold);
                     }
-                    return manager;
+                    return new Manager(m.getId(), sal, avg, earningLess, earningMore, byAmount);
                 })
                 .collect(Collectors.toSet());
     }
