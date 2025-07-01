@@ -11,7 +11,8 @@ import java.util.stream.Collectors;
  *
  * @author BibhavKumar
  */
-public class EmployeeReportingLineCalculationService implements IEmployeeReportingLineCalculationService{
+public class EmployeeReportingLineCalculationService implements IEmployeeReportingLineCalculationService {
+
 
     /**
      * Get Employees except ceo with their manager hierarchy list except Ceo.
@@ -20,10 +21,9 @@ public class EmployeeReportingLineCalculationService implements IEmployeeReporti
      * @return Map with key as Employee id and value as list of id of managers b/w the employee and Ceo.
      */
     public Map<Long, List<Long>> getEmployeeIdAndReportingLineListMap(final Set<Employee> employees) throws BadRequestException {
-        Employee ceo = getCompanyCeo(employees);
         Map<Long, Employee> employeeMap = employees.stream().collect(Collectors.toMap(Employee::getId, e -> e));
         return employees.stream()
-                .filter(e -> !Objects.equals(ceo.getId(), e.getId()))
+                .filter(e -> Objects.nonNull(e.getManagerId()))
                 .collect(Collectors.toMap(Employee::getId, employee -> {
                     List<Long> managerIds = new ArrayList<>();
                     Employee manager = employeeMap.get(employee.getManagerId());
@@ -33,14 +33,5 @@ public class EmployeeReportingLineCalculationService implements IEmployeeReporti
                     }
                     return managerIds;
                 }));
-    }
-
-    private Employee getCompanyCeo(final Set<Employee> employees) throws BadRequestException {
-        Optional<Employee> ceoOptional = employees.stream()
-                .filter(e -> Objects.isNull(e.getManagerId())).findFirst();
-        if (ceoOptional.isEmpty()) {
-            throw new BadRequestException("Data source issue::CEO info not provided.");
-        }
-        return ceoOptional.get();
     }
 }

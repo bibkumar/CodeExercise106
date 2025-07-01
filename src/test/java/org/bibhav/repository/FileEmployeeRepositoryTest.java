@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.bibhav.util.AppConstants.CEO_CONFIGURATION_ERROR;
 import static org.bibhav.util.AppConstants.INVALID_DATA_FORMAT_ERROR;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -42,11 +43,19 @@ class FileEmployeeRepositoryTest {
     }
 
     @Test
-    void getEmployeeDtoList_shouldThrowBadRequestException() {
+    void getEmployeeDtoList_shouldThrowBadRequestExceptionBecauseSalaryIsCorrupt() {
         FileEmployeeRepository emptyFileEmployeeRepository = new FileEmployeeRepository("src/test/resources/bad_test_data.csv");
         BadRequestException badRequestException = Assertions.assertThrows(BadRequestException.class, emptyFileEmployeeRepository::getEmployeeDtoList);
 
         assertEquals(INVALID_DATA_FORMAT_ERROR, badRequestException.getMessage());
+    }
+
+    @Test
+    void getEmployeeDtoList_shouldThrowBadRequestExceptionBecauseDataFileHas2Ceos() {
+        FileEmployeeRepository emptyFileEmployeeRepository = new FileEmployeeRepository("src/test/resources/more_than_one_ceo_test_data.csv");
+        BadRequestException badRequestException = Assertions.assertThrows(BadRequestException.class, emptyFileEmployeeRepository::getEmployeeDtoList);
+
+        assertEquals(CEO_CONFIGURATION_ERROR, badRequestException.getMessage());
     }
 
     @Test

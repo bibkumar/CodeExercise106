@@ -31,24 +31,29 @@ public class FileEmployeeRepository implements EmployeeRepository {
             List<String> linesLst = skipTheHeaderAndGetAllEmployeeLinesFromFile(lines);
             throwBadRequestExceptionIfDuplicateLinesFound(linesLst);
             List<EmployeeDto> employeeDtoList = new ArrayList<>();
+            int ceoCount = 0;
             for (String line : linesLst) {
                 throwBadRequestExceptionIfEmptyLineEncountered(line);
                 List<String> lineLst = Arrays.asList(line.split(","));
                 throwBadRequestExceptionIfEachLineRecordCountIsNotFourOrFive(lineLst);
                 EmployeeDto employeeDto = new EmployeeDto(lineLst);
+                if (Objects.isNull(employeeDto.getManagerId())) {
+                    ceoCount += 1;
+                }
                 employeeDtoList.add(employeeDto);
             }
+            throwBadRequestExceptionIfMoreThanOneCeoOrNoCEOIsSuppliedInData(ceoCount);
             return employeeDtoList;
         } catch (IOException e) {
             throw new ApplicationException(ERROR_OCCURRED_IN_READING_FILE);
         }
     }
 
-    private static List<String> skipTheHeaderAndGetAllEmployeeLinesFromFile(final Stream<String> lines) {
+    private List<String> skipTheHeaderAndGetAllEmployeeLinesFromFile(final Stream<String> lines) {
         return lines.skip(1).collect(Collectors.toList());
     }
 
-    private static void throwBadRequestExceptionIfDuplicateLinesFound(final List<String> linesLst) throws BadRequestException {
+    private void throwBadRequestExceptionIfDuplicateLinesFound(final List<String> linesLst) throws BadRequestException {
         Set<String> uniqueLines = new HashSet<>(linesLst);
         if (uniqueLines.size() != linesLst.size()) {
             throw new BadRequestException(DUPLICATE_EMPLOYEE_FOUND);
@@ -64,6 +69,12 @@ public class FileEmployeeRepository implements EmployeeRepository {
     private void throwBadRequestExceptionIfEmptyLineEncountered(final String line) throws BadRequestException {
         if (line == null || line.isEmpty()) {
             throw new BadRequestException(INVALID_DATA_FORMAT_ERROR);
+        }
+    }
+
+    private void throwBadRequestExceptionIfMoreThanOneCeoOrNoCEOIsSuppliedInData(int ceoCount) {
+        if (ceoCount > 1) {
+            throw new BadRequestException(CEO_CONFIGURATION_ERROR);
         }
     }
 }
