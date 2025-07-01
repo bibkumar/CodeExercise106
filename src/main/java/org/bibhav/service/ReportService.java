@@ -1,8 +1,8 @@
 package org.bibhav.service;
 
 import org.bibhav.exception.ApplicationException;
-import org.bibhav.model.Employee;
-import org.bibhav.model.Manager;
+import org.bibhav.model.entity.Employee;
+import org.bibhav.model.entity.Manager;
 
 import java.util.HashMap;
 import java.util.List;

@@ -1,14 +1,14 @@
 package org.bibhav.util;
 
-import org.bibhav.model.Employee;
-import org.bibhav.model.EmployeeDto;
+import org.bibhav.model.entity.Employee;
+import org.bibhav.model.dto.EmployeeDto;
 
 /**
  * Employee utility class.
  *
  * @author BibhavKumar
  */
-public class EmployeeUtility {
+public final class EmployeeUtility {
     private EmployeeUtility() {
         /* Don't initialize */
     }

@@ -8,7 +8,7 @@ import java.util.Map;
  *
  * @author BibhavKumar
  */
-public class PrintUtility {
+final public class PrintUtility {
     private PrintUtility() {
         /* Don't Initialize */
     }

@@ -1,4 +1,4 @@
-package org.bibhav.model;
+package org.bibhav.model.entity;
 
 import java.util.Objects;
 import java.util.Set;

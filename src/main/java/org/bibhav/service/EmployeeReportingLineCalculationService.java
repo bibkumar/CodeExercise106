@@ -1,7 +1,7 @@
 package org.bibhav.service;
 
 import org.bibhav.exception.ApplicationException;
-import org.bibhav.model.Employee;
+import org.bibhav.model.entity.Employee;
 
 import java.util.*;
 import java.util.stream.Collectors;

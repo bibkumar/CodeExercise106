@@ -1,7 +1,7 @@
 package org.bibhav.repository;
 
 import org.bibhav.exception.ApplicationException;
-import org.bibhav.model.EmployeeDto;
+import org.bibhav.model.dto.EmployeeDto;
 
 import java.io.IOException;
 import java.nio.file.Files;

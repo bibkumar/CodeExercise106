@@ -1,7 +1,7 @@
 package org.bibhav.util;
 
-import org.bibhav.model.Employee;
-import org.bibhav.model.EmployeeDto;
+import org.bibhav.model.entity.Employee;
+import org.bibhav.model.dto.EmployeeDto;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

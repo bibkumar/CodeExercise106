@@ -1,4 +1,4 @@
-package org.bibhav.model;
+package org.bibhav.model.dto;
 
 import java.util.List;
 

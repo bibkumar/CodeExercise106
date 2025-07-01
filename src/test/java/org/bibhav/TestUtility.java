@@ -1,6 +1,6 @@
 package org.bibhav;
 
-import org.bibhav.model.Employee;
+import org.bibhav.model.entity.Employee;
 
 import java.util.HashSet;
 import java.util.Set;
