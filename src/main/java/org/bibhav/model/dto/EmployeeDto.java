@@ -8,7 +8,14 @@ import java.util.List;
 import static org.bibhav.util.AppConstants.INVALID_DATA_FORMAT_ERROR;
 
 /**
- * Employee DTO.
+ * Represents a Data Transfer Object (DTO) for Employee entities.
+ * <p>
+ * This class is designed to facilitate the transfer of employee data between different layers
+ * of the application, such as the repository and service layers. It encapsulates essential
+ * employee attributes, including their ID, name, salary, and manager ID.
+ * <p>
+ * Typical use cases include data validation, transformation, and ensuring consistency
+ * when interacting with external systems or internal components.
  *
  * @author BibhavKumar
  */
@@ -19,6 +26,13 @@ public final class EmployeeDto {
     private final BigDecimal salary;
     private final Long managerId;
 
+    /**
+     * Constructs an EmployeeDto from a list of strings.
+     *
+     * @param line A list of strings representing employee data.
+     *             Expected format: [id, firstName, lastName, salary, managerId (optional)]
+     * @throws BadRequestException if the data format is invalid or parsing fails.
+     */
     public EmployeeDto(final List<String> line) throws BadRequestException {
         try {
             this.id = Long.parseLong(line.get(0));

@@ -10,7 +10,11 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 
 /**
- * Test class to test functions of employee utility.
+ * Test class for EmployeeUtility.
+ * <p>
+ * This class contains unit tests for the EmployeeUtility, ensuring that it correctly converts EmployeeDto to Employee.
+ * It uses JUnit 5 for testing and includes assertions to verify expected outcomes.
+ * </p>
  *
  * @author BibhavKumar
  */

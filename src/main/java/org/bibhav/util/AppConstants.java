@@ -1,8 +1,24 @@
 package org.bibhav.util;
 
+/**
+ * A utility class that provides application-wide constants.
+ * <p>
+ * This class is designed to centralize the definition of constants used throughout
+ * the application, ensuring consistency and reducing duplication. It includes
+ * error messages, formatting strings, and configuration values that are commonly
+ * referenced across different components.
+ * <p>
+ * By using this class, developers can maintain a single source of truth for
+ * constant values, making the application easier to manage and less prone to
+ * errors caused by hardcoding or inconsistent definitions.
+ * <p>
+ * Note: This class is not meant to be instantiated.
+ *
+ * @author BibhavKumar
+ */
 public final class AppConstants {
     private AppConstants() {
-        /* Don't Initialize */
+        /* Prevent instantiation */
     }
 
     public static final String EARNING_LESS_THRESHOLD_MULTIPLIER = "1.2";

@@ -14,7 +14,14 @@ import java.util.stream.Stream;
 import static org.bibhav.util.AppConstants.*;
 
 /**
- * Employee Repository mapped to file as data source.
+ * Employee Repository mapped to file as a data source.
+ * <p>
+ * This class implements the `EmployeeRepository` interface and provides functionality
+ * to read employee data from a file, validate its format, and convert it into `EmployeeDto` objects.
+ * It ensures data integrity by checking for duplicate entries, invalid formats, and proper CEO configuration.
+ * <p>
+ * Typical use cases include loading employee data for organizational structure analysis,
+ * reporting hierarchy evaluation, and other data-driven processes within an organization.
  *
  * @author BibhavKumar
  */
@@ -26,6 +33,13 @@ public class FileEmployeeRepository implements EmployeeRepository {
         this.dataFilePath = dataFilePath;
     }
 
+    /**
+     * Retrieves a list of EmployeeDto objects representing employees from the data file.
+     *
+     * @return A list of EmployeeDto objects containing employee data.
+     * @throws ApplicationException If an error occurs while reading the file.
+     * @throws BadRequestException  If the data format is invalid or parsing fails.
+     */
     public List<EmployeeDto> getEmployeeDtoList() throws ApplicationException, BadRequestException {
         try (Stream<String> lines = Files.lines(Paths.get(dataFilePath))) {
             List<String> linesLst = skipTheHeaderAndGetAllEmployeeLinesFromFile(lines);

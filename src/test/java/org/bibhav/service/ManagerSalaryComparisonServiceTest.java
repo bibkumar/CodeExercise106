@@ -13,7 +13,12 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Test class to test functions of manager salary comparison service.
+ * Test class for ManagerSalaryComparisonService.
+ * <p>
+ * This class contains unit tests for the ManagerSalaryComparisonService, ensuring that it correctly identifies managers
+ * and compares their salaries with their subordinates. It uses JUnit 5 for testing and includes assertions to verify
+ * expected outcomes.
+ * </p>
  *
  * @author BibhavKumar
  */

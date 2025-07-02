@@ -13,7 +13,16 @@ import static org.bibhav.util.AppConstants.EARNING_LESS_THRESHOLD_MULTIPLIER;
 import static org.bibhav.util.AppConstants.EARNING_MORE_THRESHOLD_MULTIPLIER;
 
 /**
- * Salary comparison service.
+ * Service for comparing manager salaries relative to their subordinates.
+ * <p>
+ * This class implements the {@link IManagerSalaryComparisonService} interface and provides functionality
+ * to analyze and compare the salaries of managers based on the average salary of their direct subordinates.
+ * <p>
+ * The service identifies managers who are either underpaid or overpaid compared to their subordinates,
+ * and calculates the disparity amount for further analysis.
+ * <p>
+ * Typical use cases include identifying salary disparities, ensuring fair compensation structures,
+ * and analyzing managerial salary trends within an organization.
  *
  * @author BibhavKumar
  */
@@ -25,10 +34,27 @@ public class ManagerSalaryComparisonService implements IManagerSalaryComparisonS
 
     /**
      * Computes salary comparisons for managers relative to their direct subordinates.
+     * <p>
+     * This method analyzes the salary of each manager in the provided set of employees
+     * and compares it to the average salary of their direct subordinates. It identifies
+     * whether a manager is earning less or more than the expected thresholds based on
+     * the average subordinate salary and calculates the disparity amount.
+     * <p>
+     * The thresholds for comparison are defined by constants:
+     * {@code EARNING_LESS_THRESHOLD_MULTIPLIER} and {@code EARNING_MORE_THRESHOLD_MULTIPLIER}.
+     * <p>
+     * The resulting set of {@link Manager} objects includes detailed information about:
+     * <ul>
+     *   <li>Manager's salary</li>
+     *   <li>Average salary of their subordinates</li>
+     *   <li>Whether the manager earns less or more than the thresholds</li>
+     *   <li>The amount by which the manager's salary deviates from the thresholds</li>
+     * </ul>
      *
-     * @param employees A Set<Employee> representing all employees in the organization.
-     * @return A Set<Manager> objects,
-     * each representing a manager with additional information about how their salary compares to the average salary of their direct reports.
+     * @param employees A {@code Set<Employee>} representing all employees in the organization.
+     *                  Each employee may or may not have subordinates.
+     * @return A {@code Set<Manager>} objects, each representing a manager with additional
+     *         information about how their salary compares to the average salary of their direct reports.
      */
     public Set<Manager> fetchManagersWithSalaryComparison(final Set<Employee> employees) {
         return employees.stream()

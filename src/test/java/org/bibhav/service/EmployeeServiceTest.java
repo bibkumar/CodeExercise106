@@ -11,7 +11,12 @@ import org.junit.jupiter.api.Test;
 import java.util.Set;
 
 /**
- * Test class to test functions of employee service.
+ * Test class for EmployeeService.
+ * <p>
+ * This class contains unit tests for the EmployeeService, ensuring that it correctly fetches employee data
+ * from the repository and handles various scenarios such as fetching all employees.
+ * It uses JUnit 5 for testing and includes assertions to verify expected outcomes.
+ * </p>
  *
  * @author BibhavKumar
  */

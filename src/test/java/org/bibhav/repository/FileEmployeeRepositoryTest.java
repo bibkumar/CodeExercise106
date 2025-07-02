@@ -13,7 +13,12 @@ import static org.bibhav.util.AppConstants.INVALID_DATA_FORMAT_ERROR;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * Test class to test functions of file based employee repository.
+ * Test class for FileEmployeeRepository.
+ * <p>
+ * This class contains unit tests for the FileEmployeeRepository, ensuring that it correctly handles
+ * various scenarios such as reading employee data from files, handling errors, and validating data formats.
+ * It uses JUnit 5 for testing and includes assertions to verify expected outcomes.
+ * </p>
  *
  * @author BibhavKumar
  */

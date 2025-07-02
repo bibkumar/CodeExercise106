@@ -14,7 +14,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * Test class to test functions related to employee reporting line.
+ * Test class for EmployeeReportingLineCalculationService.
+ * <p>
+ * This class contains unit tests for the EmployeeReportingLineCalculationService, ensuring that it correctly calculates
+ * employee reporting lines based on their relationships. It uses JUnit 5 for testing and includes assertions to verify
+ * expected outcomes.
+ * </p>
  *
  * @author BibhavKumar
  */

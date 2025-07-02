@@ -13,7 +13,11 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Test class to test functions of reporting service.
+ * Test class for ReportService.
+ * <p>
+ * This class contains unit tests for the ReportService, ensuring that it correctly generates reports based on employee
+ * and manager data. It uses JUnit 5 for testing and includes assertions to verify expected outcomes.
+ * </p>
  *
  * @author BibhavKumar
  */

@@ -6,7 +6,14 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
- * Employee POJO.
+ * Represents an Employee entity within the organization.
+ * <p>
+ * This class encapsulates details about an employee, including their ID, name, salary, manager ID,
+ * and subordinates. It provides functionality to manage subordinates and supports equality checks
+ * based on employee attributes.
+ * <p>
+ * Typical use cases include organizational hierarchy evaluation, salary analysis, and reporting
+ * structure optimization.
  *
  * @author BibhavKumar
  */
@@ -18,6 +25,16 @@ public final class Employee {
     private final Long managerId;
     private final Set<Employee> subordinates;
 
+    /**
+     * Constructs an Employee instance with the specified attributes.
+     *
+     * @param id           The unique identifier for the employee.
+     * @param firstName    The first name of the employee.
+     * @param lastName     The last name of the employee.
+     * @param salary       The salary of the employee.
+     * @param managerId    The ID of the employee's manager, or null if no manager.
+     * @param subordinates A set of subordinates under this employee, can be null.
+     */
     public Employee(final Long id, final String firstName, final String lastName, final BigDecimal salary, final Long managerId, final Set<Employee> subordinates) {
         this.id = id;
         this.firstName = firstName;

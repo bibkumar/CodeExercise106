@@ -7,7 +7,11 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * Test class to test functions of print utility.
+ * Test class for MessageFormatUtility.
+ * <p>
+ * This class contains unit tests for the MessageFormatUtility, ensuring that it correctly formats messages based on
+ * provided parameters. It uses JUnit 5 for testing and includes assertions to verify expected outcomes.
+ * </p>
  *
  * @author BibhavKumar
  */

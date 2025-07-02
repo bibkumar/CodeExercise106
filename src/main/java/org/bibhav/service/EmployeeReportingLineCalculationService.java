@@ -6,7 +6,16 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * Employee reporting line calculation service.
+ * Service for calculating employee reporting lines within an organization.
+ * <p>
+ * This class provides functionality to determine the hierarchical reporting structure
+ * for employees, excluding the CEO. It calculates the list of managers for each employee
+ * up to but not including the CEO, enabling analysis of reporting line lengths and organizational
+ * structure efficiency.
+ * <p>
+ * Typical use cases include identifying employees with excessively long reporting lines,
+ * evaluating organizational hierarchy, and facilitating data-driven decision-making processes
+ * related to reporting structures.
  *
  * @author BibhavKumar
  */
