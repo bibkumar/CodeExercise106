@@ -1,6 +1,5 @@
 package org.bibhav.service;
 
-import org.bibhav.exception.BadRequestException;
 import org.bibhav.model.entity.Employee;
 
 import java.util.*;
@@ -22,7 +21,7 @@ public class EmployeeReportingLineCalculationService implements IEmployeeReporti
      * @param employees set of employees
      * @return Map with key as Employee id and value as list of id of managers b/w the employee and Ceo.
      */
-    public Map<Long, List<Long>> getEmployeeIdAndReportingLineListMap(final Set<Employee> employees) throws BadRequestException {
+    public Map<Long, List<Long>> getEmployeeIdAndReportingLineListMap(final Set<Employee> employees) {
         Map<Long, Employee> employeeMap = employees.stream().collect(Collectors.toMap(Employee::getId, e -> e));
         return employees.stream()
                 .filter(e -> Objects.nonNull(e.getManagerId()))

@@ -1,6 +1,5 @@
 package org.bibhav.service;
 
-import org.bibhav.exception.BadRequestException;
 import org.bibhav.model.entity.Employee;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,7 +28,7 @@ class EmployeeReportingLineCalculationServiceTest {
     }
 
     @Test
-    void getEmployeeReportingLine_shortReportingLine() throws BadRequestException {
+    void getEmployeeReportingLine_shortReportingLine() {
         Set<Employee> employees1 = new HashSet<>();
         employees1.add(new Employee(124L, "Martin", "Chekov", new BigDecimal("45000"), null, null));
         employees1.add(new Employee(300L, "Alice", "Hasacat", new BigDecimal("50000"), 124L, null));
@@ -44,7 +43,7 @@ class EmployeeReportingLineCalculationServiceTest {
     }
 
     @Test
-    void getEmployeeReportingLine_longReportingLine() throws BadRequestException {
+    void getEmployeeReportingLine_longReportingLine() {
         Set<Employee> employees1 = new HashSet<>();
         employees1.add(new Employee(124L, "Martin", "Chekov", new BigDecimal("45000"), null, null));
         employees1.add(new Employee(300L, "Alice", "Hasacat", new BigDecimal("50000"), 124L, null));
